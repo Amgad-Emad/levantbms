@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=1320px,initial-scale=1" />
+<title>LevantBMS — Print</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Manrope:wght@300;400;500;600;700;800&family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=JetBrains+Mono:wght@400;500;600&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+<style>
+  html,body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--font-body);}
+  body{-webkit-font-smoothing:antialiased;}
+  #root{min-height:100vh;}
+  .app-loading{display:flex;align-items:center;justify-content:center;height:100vh;color:var(--accent);font-family:var(--font-mono);font-size:12px;letter-spacing:.2em;}
+
+  /* Force reveals visible for print */
+  .reveal{opacity:1 !important;transform:none !important;}
+
+  /* Sticky elements break printing — flatten */
+  .nav, [class*="sticky"] { position:static !important; }
+  .float-cta, .float-btn { display:none !important; }
+
+  /* Print page setup */
+  @page { size: A4 portrait; margin: 0; }
+  @media print {
+    html, body { background: var(--bg) !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .print-page { break-after: page; page-break-after: always; }
+    .print-page:last-child { break-after: auto; }
+    /* Each page section: keep header on its first page, no force breaks inside */
+    section { break-inside: avoid-page; }
+    /* Hide tweaks panel */
+    [data-tweaks-panel], .tweaks-panel { display:none !important; }
+    .nav { display:none !important; }
+    .topbar { display:none !important; }
+  }
+  .print-page { break-after: page; }
+  .print-divider {
+    text-align:center;
+    padding:18px;
+    font-family:var(--font-mono);
+    font-size:10px;
+    letter-spacing:.18em;
+    color:var(--fg-mute);
+    background:var(--bg-2);
+    border-block:1px solid var(--border);
+  }
+</style>
+</head>
+<body>
+<div id="root"><div class="app-loading">LEVANT · LOADING</div></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+<script type="text/babel" src="content.jsx"></script>
+<script type="text/babel" src="ui.jsx"></script>
+<script type="text/babel" src="pages-home.jsx"></script>
+<script type="text/babel" src="pages-about.jsx"></script>
+<script type="text/babel" src="pages-services.jsx"></script>
+<script type="text/babel" src="pages-partners.jsx"></script>
+<script type="text/babel" src="pages-gallery.jsx"></script>
+<script type="text/babel" src="pages-faqs.jsx"></script>
+<script type="text/babel" src="pages-blog.jsx"></script>
+<script type="text/babel" src="pages-contact.jsx"></script>
+
+<script type="text/babel">
+// Print app — renders every page stacked, no nav, no tweaks.
+const PRINT_LANG = "en";
+const PRINT_THEME = "light";
+const PAGES = [
+  { key:"home",     C: () => <PageHome     t={window.CONTENT[PRINT_LANG]} lang={PRINT_LANG} setPage={()=>{}} tweaks={{theme:"light",lang:"en",hero:"default",palette:"navy-orange",motion:1,fontPair:"sora-manrope"}} /> },
+  { key:"about",    label:"About Us",        C: () => <PageAbout    t={window.CONTENT[PRINT_LANG]} lang={PRINT_LANG} setPage={()=>{}} tweaks={{motion:1}} /> },
+  { key:"services", label:"Services",        C: () => <PageServices t={window.CONTENT[PRINT_LANG]} lang={PRINT_LANG} setPage={()=>{}} tweaks={{motion:1}} /> },
+  { key:"partners", label:"Global Partners", C: () => <PagePartners t={window.CONTENT[PRINT_LANG]} lang={PRINT_LANG} setPage={()=>{}} tweaks={{motion:1}} /> },
+  { key:"gallery",  label:"Gallery",         C: () => <PageGallery  t={window.CONTENT[PRINT_LANG]} lang={PRINT_LANG} setPage={()=>{}} tweaks={{motion:1}} /> },
+  { key:"faqs",     label:"FAQs",            C: () => <PageFaqs     t={window.CONTENT[PRINT_LANG]} lang={PRINT_LANG} setPage={()=>{}} tweaks={{motion:1}} /> },
+  { key:"blog",     label:"Blog",            C: () => <PageBlog     t={window.CONTENT[PRINT_LANG]} lang={PRINT_LANG} setPage={()=>{}} tweaks={{motion:1}} view="index" /> },
+  { key:"article",  label:"Article",         C: () => <PageBlog     t={window.CONTENT[PRINT_LANG]} lang={PRINT_LANG} setPage={()=>{}} tweaks={{motion:1}} view="article" /> },
+  { key:"contact",  label:"Contact",         C: () => <PageContact  t={window.CONTENT[PRINT_LANG]} lang={PRINT_LANG} setPage={()=>{}} tweaks={{motion:1}} /> },
+];
+
+function PrintApp() {
+  React.useEffect(() => {
+    document.documentElement.setAttribute("data-theme", PRINT_THEME);
+    document.documentElement.setAttribute("dir", "ltr");
+    document.documentElement.style.setProperty("--motion", "0");
+  }, []);
+  return (
+    <React.Fragment>
+      {PAGES.map((p, i) => (
+        <div key={p.key} className="print-page">
+          {p.label && <div className="print-divider">PAGE {String(i+1).padStart(2,"0")} · {p.label.toUpperCase()}</div>}
+          <p.C />
+        </div>
+      ))}
+    </React.Fragment>
+  );
+}
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<PrintApp />);
+
+// Auto-print after fonts + layout settle
+(async () => {
+  try { if (document.fonts && document.fonts.ready) await document.fonts.ready; } catch (e) {}
+  // Wait for React render + reveal classes to settle
+  await new Promise((r) => setTimeout(r, 1500));
+  // Mark all reveals as in
+  document.querySelectorAll(".reveal").forEach((el) => el.classList.add("in"));
+  await new Promise((r) => setTimeout(r, 500));
+  window.print();
+})();
+</script>
+</body>
+</html>

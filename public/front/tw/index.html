@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-page="home" class="scroll-smooth">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>LevantBMS — Business Consultancy in Bahrain</title>
+<meta name="description" content="Recognized professional body in Bahrain. Company formation, MOIC & CBB approvals, corporate governance and capital-markets advisory." />
+<link rel="stylesheet" href="assets/style.css" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    darkMode: 'class',
+    theme: {
+      extend: {
+        colors: {
+          navy:   { 900:'#06182F', 800:'#0A1F3D', 700:'#0B2545', 600:'#14315A', 500:'#1F4275', 300:'#3E6BA8', 100:'#D8E0EE' },
+          orange: { 700:'#C45A18', 600:'#E5701F', 500:'#F58220', 400:'#FF9846', 100:'#FFE4CC' },
+          cream:'#FAF7F2', cream2:'#F2EDE3', ink:'#0A1224', ink2:'#1A2440', mute:'#5B6982',
+        },
+        fontFamily: {
+          display: ['Sora','ui-sans-serif','system-ui','sans-serif'],
+          body:    ['Manrope','ui-sans-serif','system-ui','sans-serif'],
+          serif:   ['Fraunces','ui-serif','Georgia','serif'],
+          mono:    ['"JetBrains Mono"','ui-monospace','monospace'],
+        },
+        maxWidth: { container: '1320px' },
+        boxShadow: {
+          'sm-soft': '0 1px 2px rgba(10,18,36,.06), 0 1px 0 rgba(10,18,36,.04)',
+          'md-soft': '0 8px 24px -8px rgba(10,18,36,.18), 0 4px 12px -4px rgba(10,18,36,.08)',
+          'lg-soft': '0 24px 60px -16px rgba(10,18,36,.32), 0 8px 24px -8px rgba(10,18,36,.16)',
+        },
+      }
+    }
+  };
+</script>
+</head>
+<body class="bg-cream dark:bg-navy-900 text-ink dark:text-cream font-body antialiased">
+
+<div data-chrome-header></div>
+
+<main>
+  <!-- =============== HERO =============== -->
+  <section class="relative overflow-hidden pt-20 md:pt-28 pb-24 md:pb-32">
+    <div class="absolute inset-0 dotgrid text-mute" style="mask-image:radial-gradient(70% 60% at 50% 30%, #000 30%, transparent 80%); -webkit-mask-image:radial-gradient(70% 60% at 50% 30%, #000 30%, transparent 80%);" aria-hidden="true"></div>
+    <div class="absolute top-20 -end-10 w-60 h-60 stripe-motif" style="mask-image:linear-gradient(225deg,#000,transparent 70%); -webkit-mask-image:linear-gradient(225deg,#000,transparent 70%);" aria-hidden="true"></div>
+
+    <div class="relative max-w-container mx-auto px-5 sm:px-10">
+      <div class="grid lg:grid-cols-[1.4fr_1fr] gap-12 lg:gap-16 items-center">
+        <div>
+          <div class="eyebrow mb-7 reveal" data-i18n="home.eyebrow">Bahrain · Professional Body · مكتب معتمد</div>
+          <h1 class="font-display font-medium tracking-tight text-[clamp(40px,6.4vw,84px)] leading-[1.02] mb-7 reveal delay-1">
+            <span data-i18n="home.h1a">Setting up business</span>
+            <span class="font-serif italic font-light text-orange-500" data-i18n="home.h1b"> in Bahrain,</span>
+            <span data-i18n="home.h1c">made deliberate.</span>
+          </h1>
+          <p class="max-w-[520px] text-lg leading-relaxed text-mute dark:text-cream/60 mb-9 reveal delay-2" data-i18n="home.sub">
+            Recognized by the Ministry of Industry & Commerce. Twenty years guiding founders, banks, and family enterprises through company formation, regulatory approvals, and the work that comes after.
+          </p>
+          <div class="flex flex-wrap gap-3.5 reveal delay-3">
+            <a href="contact.html" class="btn-link inline-flex items-center gap-2.5 px-6 py-3.5 rounded-full bg-orange-500 hover:bg-orange-600 text-white font-semibold text-sm shadow-md-soft transition">
+              <span data-i18n="home.ctaPrimary">Start your company</span><span class="btn-arrow">→</span>
+            </a>
+            <a href="services.html" class="inline-flex items-center gap-2 px-6 py-3.5 rounded-full border border-ink/15 dark:border-white/20 hover:border-orange-500 hover:text-orange-500 font-semibold text-sm transition">
+              <span data-i18n="home.ctaSecondary">How we work</span>
+            </a>
+          </div>
+
+          <div class="mt-12 pt-7 border-t border-ink/10 dark:border-white/10 flex flex-wrap gap-6 reveal delay-4">
+            <div>
+              <div class="font-mono text-[10px] uppercase tracking-[.18em] text-mute mb-1" data-i18n="home.estLabel">Established</div>
+              <div class="font-display font-bold text-xl">2003</div>
+            </div>
+            <div class="w-px bg-ink/10 dark:bg-white/10"></div>
+            <div>
+              <div class="font-mono text-[10px] uppercase tracking-[.18em] text-mute mb-1" data-i18n="home.locLabel">Location</div>
+              <div class="font-display font-bold text-xl" data-i18n="home.locVal">Bahrain Harbour</div>
+            </div>
+            <div class="w-px bg-ink/10 dark:bg-white/10"></div>
+            <div>
+              <div class="font-mono text-[10px] uppercase tracking-[.18em] text-mute mb-1" data-i18n="home.statusLabel">Status</div>
+              <div class="font-display font-bold text-xl text-orange-500" data-i18n="home.statusVal">Professional Body</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Stamp cards -->
+        <div class="relative h-[520px] hidden lg:block reveal delay-2">
+          <div class="absolute top-0 start-10 w-[300px] float-0 bg-white dark:bg-navy-700 border border-ink/10 dark:border-white/10 rounded-2xl p-5 shadow-md-soft">
+            <div class="font-mono text-[10px] uppercase tracking-[.18em] text-orange-500 mb-1.5" data-i18n="home.stamp1Tag">Approval</div>
+            <h4 class="font-display font-semibold text-base" data-i18n="home.stamp1Title">Ministry of Industry & Commerce</h4>
+            <div class="flex justify-between mt-3 text-xs text-mute"><span data-i18n="home.stamp1m1">MOIC</span><span data-i18n="home.stamp1m2">Full mandate</span></div>
+            <div class="absolute -top-2 -end-2 w-4 h-4 border-2 border-orange-500 rounded-full bg-white dark:bg-navy-700"></div>
+          </div>
+          <div class="absolute top-40 start-32 w-[300px] float-1 bg-white dark:bg-navy-700 border border-ink/10 dark:border-white/10 rounded-2xl p-5 shadow-md-soft">
+            <div class="font-mono text-[10px] uppercase tracking-[.18em] text-orange-500 mb-1.5" data-i18n="home.stamp2Tag">License</div>
+            <h4 class="font-display font-semibold text-base" data-i18n="home.stamp2Title">Central Bank of Bahrain</h4>
+            <div class="flex justify-between mt-3 text-xs text-mute"><span data-i18n="home.stamp2m1">CBB</span><span data-i18n="home.stamp2m2">Regulated entities</span></div>
+            <div class="absolute -top-2 -end-2 w-4 h-4 border-2 border-orange-500 rounded-full bg-white dark:bg-navy-700"></div>
+          </div>
+          <div class="absolute top-80 start-8 w-[300px] float-2 bg-white dark:bg-navy-700 border border-ink/10 dark:border-white/10 rounded-2xl p-5 shadow-md-soft">
+            <div class="font-mono text-[10px] uppercase tracking-[.18em] text-orange-500 mb-1.5" data-i18n="home.stamp3Tag">Status</div>
+            <h4 class="font-display font-semibold text-base" data-i18n="home.stamp3Title">Registered Professional Body</h4>
+            <div class="flex justify-between mt-3 text-xs text-mute"><span data-i18n="home.stamp3m1">مكتب معتمد</span><span data-i18n="home.stamp3m2">Since 2003</span></div>
+            <div class="absolute -top-2 -end-2 w-4 h-4 border-2 border-orange-500 rounded-full bg-white dark:bg-navy-700"></div>
+          </div>
+          <div class="absolute top-36 end-0 w-36 h-36 rounded-full border border-dashed border-orange-500 flex items-center justify-center opacity-60">
+            <div class="text-center">
+              <div class="font-serif italic font-light text-3xl text-orange-500 leading-none">20+</div>
+              <div class="font-mono text-[9px] uppercase tracking-[.18em] text-mute mt-1" data-i18n="home.yearsLabel">Years</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============== MARQUEE =============== -->
+  <div class="border-y border-ink/10 dark:border-white/10 py-5 bg-white dark:bg-navy-800">
+    <div class="marquee">
+      <div class="marquee-track">
+        <span class="inline-flex items-center gap-6 font-display text-xl md:text-2xl font-medium">Company formation<span class="w-1.5 h-1.5 rounded-full bg-orange-500"></span></span>
+        <span class="inline-flex items-center gap-6 font-display text-xl md:text-2xl font-medium">MOIC approvals<span class="w-1.5 h-1.5 rounded-full bg-orange-500"></span></span>
+        <span class="inline-flex items-center gap-6 font-display text-xl md:text-2xl font-medium">CBB licensing<span class="w-1.5 h-1.5 rounded-full bg-orange-500"></span></span>
+        <span class="inline-flex items-center gap-6 font-display text-xl md:text-2xl font-medium">Corporate governance<span class="w-1.5 h-1.5 rounded-full bg-orange-500"></span></span>
+        <span class="inline-flex items-center gap-6 font-display text-xl md:text-2xl font-medium">IPO advisory<span class="w-1.5 h-1.5 rounded-full bg-orange-500"></span></span>
+        <span class="inline-flex items-center gap-6 font-display text-xl md:text-2xl font-medium">Capital structuring<span class="w-1.5 h-1.5 rounded-full bg-orange-500"></span></span>
+        <span class="inline-flex items-center gap-6 font-display text-xl md:text-2xl font-medium">Mergers & acquisitions<span class="w-1.5 h-1.5 rounded-full bg-orange-500"></span></span>
+        <span class="inline-flex items-center gap-6 font-display text-xl md:text-2xl font-medium">Regulatory compliance<span class="w-1.5 h-1.5 rounded-full bg-orange-500"></span></span>
+        <span class="inline-flex items-center gap-6 font-display text-xl md:text-2xl font-medium">Company formation<span class="w-1.5 h-1.5 rounded-full bg-orange-500"></span></span>
+        <span class="inline-flex items-center gap-6 font-display text-xl md:text-2xl font-medium">MOIC approvals<span class="w-1.5 h-1.5 rounded-full bg-orange-500"></span></span>
+        <span class="inline-flex items-center gap-6 font-display text-xl md:text-2xl font-medium">CBB licensing<span class="w-1.5 h-1.5 rounded-full bg-orange-500"></span></span>
+        <span class="inline-flex items-center gap-6 font-display text-xl md:text-2xl font-medium">Corporate governance<span class="w-1.5 h-1.5 rounded-full bg-orange-500"></span></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- =============== ABOUT STRIP =============== -->
+  <section class="py-20 md:py-28">
+    <div class="max-w-container mx-auto px-5 sm:px-10">
+      <div class="grid lg:grid-cols-[1fr_1.2fr] gap-16 items-start">
+        <div>
+          <div class="eyebrow mb-7 reveal" data-i18n="home.aboutEyebrow">Who we are</div>
+          <h2 class="font-display font-medium text-[clamp(32px,4vw,56px)] leading-[1.05] tracking-tight mb-7 reveal delay-1" data-i18n="home.aboutTitle">A consultancy built on relationships, not transactions.</h2>
+          <p class="text-lg leading-relaxed text-ink2 dark:text-cream/80 mb-8 reveal delay-2" data-i18n="home.aboutBody">LEVANT Business Management Services is a Bahrain-based consultancy licensed to undertake business management and advisory in a wide range of corporate activities.</p>
+          <a href="about.html" class="btn-link inline-flex items-center gap-2.5 px-6 py-3.5 rounded-full bg-navy-800 dark:bg-orange-500 hover:bg-navy-700 dark:hover:bg-orange-600 text-cream dark:text-navy-900 font-semibold text-sm transition reveal delay-3">
+            <span data-i18n="home.aboutMore">More about us</span><span class="btn-arrow">→</span>
+          </a>
+        </div>
+        <div class="grid grid-cols-2 gap-px bg-ink/10 dark:bg-white/10 border border-ink/10 dark:border-white/10 rounded-2xl overflow-hidden reveal">
+          <div class="bg-white dark:bg-navy-800 p-8 lg:p-9 min-h-[200px] flex flex-col justify-between">
+            <span class="font-display font-medium text-[clamp(48px,5.5vw,76px)] leading-none tracking-tight"><span data-counter="20">0</span><span class="text-orange-500" data-i18n="stat1.unit">+</span></span>
+            <div class="text-sm text-mute dark:text-cream/60 mt-6" data-i18n="stat1.l">Years in Bahrain</div>
+          </div>
+          <div class="bg-white dark:bg-navy-800 p-8 lg:p-9 min-h-[200px] flex flex-col justify-between">
+            <span class="font-display font-medium text-[clamp(48px,5.5vw,76px)] leading-none tracking-tight"><span data-counter="400">0</span><span class="text-orange-500" data-i18n="stat2.unit">+</span></span>
+            <div class="text-sm text-mute dark:text-cream/60 mt-6" data-i18n="stat2.l">Companies set up</div>
+          </div>
+          <div class="bg-white dark:bg-navy-800 p-8 lg:p-9 min-h-[200px] flex flex-col justify-between">
+            <span class="font-display font-medium text-[clamp(48px,5.5vw,76px)] leading-none tracking-tight"><span data-counter="12">0</span><span class="text-orange-500" data-i18n="stat3.unit"></span></span>
+            <div class="text-sm text-mute dark:text-cream/60 mt-6" data-i18n="stat3.l">Sectors covered</div>
+          </div>
+          <div class="bg-white dark:bg-navy-800 p-8 lg:p-9 min-h-[200px] flex flex-col justify-between">
+            <span class="font-display font-medium text-[clamp(48px,5.5vw,76px)] leading-none tracking-tight"><span data-counter="98">0</span><span class="text-orange-500" data-i18n="stat4.unit">%</span></span>
+            <div class="text-sm text-mute dark:text-cream/60 mt-6" data-i18n="stat4.l">Client retention</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============== SERVICES LIST =============== -->
+  <section class="py-20 md:py-28 bg-white dark:bg-navy-800 border-y border-ink/10 dark:border-white/10">
+    <div class="max-w-container mx-auto px-5 sm:px-10">
+      <div class="grid lg:grid-cols-[1fr_1.2fr] gap-12 mb-16 items-end">
+        <div>
+          <div class="eyebrow mb-6 reveal" data-i18n="home.servicesEyebrow">What we do</div>
+          <h2 class="font-display font-medium text-[clamp(32px,4vw,56px)] leading-[1.05] tracking-tight reveal delay-1" data-i18n="home.servicesTitle">Three practice areas. One accountable team.</h2>
+        </div>
+        <p class="max-w-[480px] text-lg text-mute dark:text-cream/60 reveal delay-2" data-i18n="home.servicesSub">Each engagement is led end-to-end by a senior consultant — no handoffs.</p>
+      </div>
+
+      <div class="reveal">
+        <a href="services.html" class="svc-item group grid grid-cols-[60px_1fr_auto] gap-6 items-center py-8 border-t border-ink/10 dark:border-white/10 cursor-pointer">
+          <div class="font-serif italic font-light text-4xl text-orange-500">01</div>
+          <div>
+            <div class="font-mono text-[10px] uppercase tracking-[.18em] text-mute mb-2" data-i18n="svc1.tag">Ministry of Commerce</div>
+            <div class="font-display text-[clamp(22px,2.2vw,32px)] font-medium tracking-tight group-hover:text-orange-500 transition" data-i18n="svc1.title">Company formation & corporate registry</div>
+          </div>
+          <div class="text-mute group-hover:text-orange-500 transition btn-arrow"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 5l7 7-7 7"/></svg></div>
+        </a>
+        <a href="services.html" class="svc-item group grid grid-cols-[60px_1fr_auto] gap-6 items-center py-8 border-t border-ink/10 dark:border-white/10 cursor-pointer">
+          <div class="font-serif italic font-light text-4xl text-orange-500">02</div>
+          <div>
+            <div class="font-mono text-[10px] uppercase tracking-[.18em] text-mute mb-2" data-i18n="svc2.tag">Corporate Services</div>
+            <div class="font-display text-[clamp(22px,2.2vw,32px)] font-medium tracking-tight group-hover:text-orange-500 transition" data-i18n="svc2.title">Governance, structure & compliance</div>
+          </div>
+          <div class="text-mute group-hover:text-orange-500 transition btn-arrow"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 5l7 7-7 7"/></svg></div>
+        </a>
+        <a href="services.html" class="svc-item group grid grid-cols-[60px_1fr_auto] gap-6 items-center py-8 border-t border-ink/10 dark:border-white/10 cursor-pointer">
+          <div class="font-serif italic font-light text-4xl text-orange-500">03</div>
+          <div>
+            <div class="font-mono text-[10px] uppercase tracking-[.18em] text-mute mb-2" data-i18n="svc3.tag">Advisory Services</div>
+            <div class="font-display text-[clamp(22px,2.2vw,32px)] font-medium tracking-tight group-hover:text-orange-500 transition" data-i18n="svc3.title">Capital markets & private placement</div>
+          </div>
+          <div class="text-mute group-hover:text-orange-500 transition btn-arrow"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 5l7 7-7 7"/></svg></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============== PARTNERS =============== -->
+  <section class="py-20 md:py-28">
+    <div class="max-w-container mx-auto px-5 sm:px-10">
+      <div class="eyebrow mb-6 reveal" data-i18n="home.partnersEyebrow">Global network</div>
+      <h2 class="font-display font-medium text-[clamp(32px,4vw,56px)] leading-[1.05] tracking-tight max-w-[720px] mb-12 reveal delay-1" data-i18n="home.partnersTitle">Partners we plug into your business.</h2>
+      <div class="grid md:grid-cols-2 gap-6 reveal">
+        <div class="bg-white dark:bg-navy-800 border border-ink/10 dark:border-white/10 rounded-2xl p-10 flex flex-col gap-4 hover:border-orange-500 transition">
+          <div class="flex justify-between items-start mb-2">
+            <div>
+              <div class="font-mono text-[10px] uppercase tracking-[.18em] text-mute mb-1.5" data-i18n="p1.tag">Human Resources Platform</div>
+              <h3 class="font-display text-3xl font-semibold tracking-tight" data-i18n="p1.name">OrangeHRM</h3>
+            </div>
+            <div class="px-3 py-1.5 bg-cream dark:bg-navy-900 border border-ink/10 dark:border-white/10 rounded-full font-mono text-[11px] text-orange-500 tracking-wider">HR</div>
+          </div>
+          <p class="text-mute dark:text-cream/60 leading-relaxed" data-i18n="p1.body">HR data, talent, and process management — implementation, training, customizations, and ongoing support.</p>
+          <a href="partners.html" class="btn-link mt-2 inline-flex items-center gap-2 text-sm font-semibold text-orange-500"><span data-i18n="c.learnMore">Learn more</span><span class="btn-arrow">→</span></a>
+        </div>
+        <div class="bg-white dark:bg-navy-800 border border-ink/10 dark:border-white/10 rounded-2xl p-10 flex flex-col gap-4 hover:border-orange-500 transition">
+          <div class="flex justify-between items-start mb-2">
+            <div>
+              <div class="font-mono text-[10px] uppercase tracking-[.18em] text-mute mb-1.5" data-i18n="p2.tag">Trading & Brokerage</div>
+              <h3 class="font-display text-3xl font-semibold tracking-tight" data-i18n="p2.name">EQUITI</h3>
+            </div>
+            <div class="px-3 py-1.5 bg-cream dark:bg-navy-900 border border-ink/10 dark:border-white/10 rounded-full font-mono text-[11px] text-orange-500 tracking-wider">FIN</div>
+          </div>
+          <p class="text-mute dark:text-cream/60 leading-relaxed" data-i18n="p2.body">Regulated trading infrastructure built around client trust and the stringent standards of the JSC.</p>
+          <a href="partners.html" class="btn-link mt-2 inline-flex items-center gap-2 text-sm font-semibold text-orange-500"><span data-i18n="c.learnMore">Learn more</span><span class="btn-arrow">→</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============== PILLARS =============== -->
+  <section class="py-20 md:py-28 bg-navy-800 dark:bg-navy-900 text-cream relative overflow-hidden">
+    <div class="absolute inset-0 dotgrid text-white opacity-[.06]" aria-hidden="true"></div>
+    <div class="relative max-w-container mx-auto px-5 sm:px-10">
+      <div class="eyebrow mb-6 reveal" data-i18n="home.pillarsEyebrow">Bahrain investment overview</div>
+      <h2 class="font-display font-medium text-[clamp(32px,4vw,56px)] leading-[1.05] tracking-tight text-white max-w-[720px] mb-16 reveal delay-1" data-i18n="home.pillarsTitle">A jurisdiction designed for capital.</h2>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-white/10 border-t border-white/10 reveal">
+        <div class="bg-navy-800 dark:bg-navy-900 p-7 min-h-[240px] flex flex-col gap-4">
+          <div class="font-serif italic font-light text-3xl text-orange-500">01</div>
+          <h4 class="font-display font-semibold text-white text-lg" data-i18n="pi1.t">Investing in Bahrain</h4>
+          <p class="text-white/70 text-sm leading-relaxed mt-auto" data-i18n="pi1.d">Why founders, family offices, and corporates choose the Kingdom as their regional base.</p>
+        </div>
+        <div class="bg-navy-800 dark:bg-navy-900 p-7 min-h-[240px] flex flex-col gap-4">
+          <div class="font-serif italic font-light text-3xl text-orange-500">02</div>
+          <h4 class="font-display font-semibold text-white text-lg" data-i18n="pi2.t">Establishing a commercial company</h4>
+          <p class="text-white/70 text-sm leading-relaxed mt-auto" data-i18n="pi2.d">The step-by-step from name reservation through Commercial Registration.</p>
+        </div>
+        <div class="bg-navy-800 dark:bg-navy-900 p-7 min-h-[240px] flex flex-col gap-4">
+          <div class="font-serif italic font-light text-3xl text-orange-500">03</div>
+          <h4 class="font-display font-semibold text-white text-lg" data-i18n="pi3.t">Operating a business locally</h4>
+          <p class="text-white/70 text-sm leading-relaxed mt-auto" data-i18n="pi3.d">What changes after incorporation: VAT, EWA, GOSI, banking, audit.</p>
+        </div>
+        <div class="bg-navy-800 dark:bg-navy-900 p-7 min-h-[240px] flex flex-col gap-4">
+          <div class="font-serif italic font-light text-3xl text-orange-500">04</div>
+          <h4 class="font-display font-semibold text-white text-lg" data-i18n="pi4.t">What we offer</h4>
+          <p class="text-white/70 text-sm leading-relaxed mt-auto" data-i18n="pi4.d">Our scope, what we handle in-house, and where we coordinate ministry desks for you.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============== BLOG STRIP =============== -->
+  <section class="py-20 md:py-28">
+    <div class="max-w-container mx-auto px-5 sm:px-10">
+      <div class="flex flex-wrap justify-between items-end mb-12 gap-6">
+        <div>
+          <div class="eyebrow mb-6 reveal" data-i18n="home.blogEyebrow">From the blog</div>
+          <h2 class="font-display font-medium text-[clamp(32px,4vw,56px)] leading-[1.05] tracking-tight reveal delay-1" data-i18n="home.blogTitle">Notes from the harbour.</h2>
+        </div>
+        <a href="blog.html" class="btn-link inline-flex items-center gap-2 px-6 py-3.5 rounded-full border border-ink/15 dark:border-white/20 hover:border-orange-500 hover:text-orange-500 font-semibold text-sm transition"><span data-i18n="c.viewAll">View all</span><span class="btn-arrow">→</span></a>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 reveal">
+        <a href="article.html" class="bg-white dark:bg-navy-800 border border-ink/10 dark:border-white/10 rounded-2xl overflow-hidden hover:border-orange-500 transition">
+          <div class="img-ph aspect-[4/3]"><span class="ph-label">image · Guides</span></div>
+          <div class="p-7">
+            <div class="flex gap-2.5 items-center font-mono text-xs text-mute tracking-wider mb-3.5"><span class="text-orange-500" data-i18n="blog.catGuides">Guides</span><span>·</span><span>8 <span data-i18n="c.minread">min read</span></span></div>
+            <h3 class="font-display font-semibold text-xl tracking-tight leading-snug mb-3.5">Top Business Management Consultancy in Bahrain</h3>
+            <p class="text-sm text-mute dark:text-cream/60 leading-relaxed">What separates a registered Professional Body from a generalist consultant — and how to tell the difference before you sign a retainer.</p>
+            <div class="mt-4 font-mono text-xs text-mute tracking-wider">September 16, 2025</div>
+          </div>
+        </a>
+        <a href="article.html" class="bg-white dark:bg-navy-800 border border-ink/10 dark:border-white/10 rounded-2xl overflow-hidden hover:border-orange-500 transition">
+          <div class="img-ph aspect-[4/3]"><span class="ph-label">image · Investment</span></div>
+          <div class="p-7">
+            <div class="flex gap-2.5 items-center font-mono text-xs text-mute tracking-wider mb-3.5"><span class="text-orange-500" data-i18n="blog.catInvest">Investment</span><span>·</span><span>11 <span data-i18n="c.minread">min read</span></span></div>
+            <h3 class="font-display font-semibold text-xl tracking-tight leading-snug mb-3.5">How to Invest in Bahrain — Investment Advice for 2025</h3>
+            <p class="text-sm text-mute dark:text-cream/60 leading-relaxed">Free zones, sectoral incentives, and the case for the Kingdom as a regional holding jurisdiction.</p>
+            <div class="mt-4 font-mono text-xs text-mute tracking-wider">August 26, 2025</div>
+          </div>
+        </a>
+        <a href="article.html" class="bg-white dark:bg-navy-800 border border-ink/10 dark:border-white/10 rounded-2xl overflow-hidden hover:border-orange-500 transition">
+          <div class="img-ph aspect-[4/3]"><span class="ph-label">image · Setup</span></div>
+          <div class="p-7">
+            <div class="flex gap-2.5 items-center font-mono text-xs text-mute tracking-wider mb-3.5"><span class="text-orange-500" data-i18n="blog.catSetup">Company Setup</span><span>·</span><span>9 <span data-i18n="c.minread">min read</span></span></div>
+            <h3 class="font-display font-semibold text-xl tracking-tight leading-snug mb-3.5">How to Incorporate a Company in Bahrain: 2025 Guide</h3>
+            <p class="text-sm text-mute dark:text-cream/60 leading-relaxed">The complete sequence: name reservation, activity selection, MOA, capital deposit, CR issuance.</p>
+            <div class="mt-4 font-mono text-xs text-mute tracking-wider">August 23, 2025</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============== FINAL CTA (skyline) =============== -->
+  <section class="relative overflow-hidden border-t border-ink/10 dark:border-white/10">
+    <div class="absolute inset-0 z-0">
+      <svg viewBox="0 0 1200 400" preserveAspectRatio="xMidYMax slice" class="w-full h-full" aria-hidden="true">
+        <defs>
+          <linearGradient id="sky-cta" x1="0" x2="0" y1="0" y2="1"><stop offset="0%" stop-color="#06182F"/><stop offset="60%" stop-color="#0B2545"/><stop offset="100%" stop-color="#14315A"/></linearGradient>
+        </defs>
+        <rect width="1200" height="400" fill="url(#sky-cta)"/>
+        <g fill="rgba(255,255,255,.06)" stroke="rgba(255,255,255,.18)" stroke-width="1">
+          <path d="M520,400 L520,140 Q550,80 580,140 L580,400 Z"/>
+          <path d="M620,400 L620,140 Q650,80 680,140 L680,400 Z"/>
+        </g>
+        <g fill="rgba(10,18,36,.55)" stroke="rgba(255,255,255,.12)">
+          <rect x="60" y="240" width="80" height="160"/><rect x="150" y="200" width="60" height="200"/>
+          <rect x="220" y="220" width="100" height="180"/><rect x="330" y="180" width="70" height="220"/>
+          <rect x="410" y="210" width="90" height="190"/><rect x="710" y="190" width="80" height="210"/>
+          <rect x="800" y="220" width="70" height="180"/><rect x="880" y="170" width="100" height="230"/>
+          <rect x="990" y="210" width="70" height="190"/><rect x="1070" y="230" width="80" height="170"/>
+        </g>
+      </svg>
+      <div class="absolute inset-0 bg-gradient-to-b from-navy-900/65 to-navy-900/95"></div>
+    </div>
+    <div class="relative z-10 max-w-container mx-auto px-5 sm:px-10 py-24 md:py-32 text-center text-cream">
+      <div class="eyebrow justify-center inline-flex text-orange-400 mb-6 reveal" data-i18n="home.finalLabel">Location</div>
+      <h2 class="font-display font-medium text-[clamp(32px,4vw,56px)] leading-[1.05] tracking-tight text-white max-w-[900px] mx-auto reveal delay-1" data-i18n="home.finalCtaTitle">The harbour is a 4-minute walk to the ministry.</h2>
+      <p class="max-w-[600px] mx-auto mt-6 text-lg text-cream/80 reveal delay-2" data-i18n="home.finalCtaBody">We are strategically located at Bahrain Financial Harbour, Harbour Gate, 2nd Floor — directly opposite the Bahrain Ministry of Industry, Commerce and Tourism.</p>
+      <div class="mt-9 flex gap-3 justify-center flex-wrap reveal delay-3">
+        <a href="contact.html" class="btn-link inline-flex items-center gap-2.5 px-6 py-3.5 rounded-full bg-orange-500 hover:bg-orange-600 text-white font-semibold text-sm shadow-md-soft transition"><span data-i18n="home.finalCtaBtn">Schedule a meeting</span><span class="btn-arrow">→</span></a>
+        <a href="https://www.google.com/maps/place/Levant+Business+Management+Services,+Bahrain.+Professional+Body/" target="_blank" rel="noreferrer" class="btn-link inline-flex items-center gap-2 px-6 py-3.5 rounded-full border border-white/30 text-white hover:border-white/60 font-semibold text-sm transition"><span data-i18n="top.findMap">Find us on map →</span></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div data-chrome-footer></div>
+
+<script src="assets/partials.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>

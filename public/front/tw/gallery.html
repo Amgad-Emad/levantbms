@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-page="gallery" class="scroll-smooth">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Gallery · LevantBMS</title>
+<link rel="stylesheet" href="assets/style.css" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    darkMode: 'class',
+    theme: {
+      extend: {
+        colors: {
+          navy:   { 900:'#06182F', 800:'#0A1F3D', 700:'#0B2545', 600:'#14315A', 500:'#1F4275', 300:'#3E6BA8', 100:'#D8E0EE' },
+          orange: { 700:'#C45A18', 600:'#E5701F', 500:'#F58220', 400:'#FF9846', 100:'#FFE4CC' },
+          cream:'#FAF7F2', cream2:'#F2EDE3', ink:'#0A1224', ink2:'#1A2440', mute:'#5B6982',
+        },
+        fontFamily: {
+          display: ['Sora','ui-sans-serif','system-ui','sans-serif'],
+          body:    ['Manrope','ui-sans-serif','system-ui','sans-serif'],
+          serif:   ['Fraunces','ui-serif','Georgia','serif'],
+          mono:    ['"JetBrains Mono"','ui-monospace','monospace'],
+        },
+        maxWidth: { container: '1320px' },
+        boxShadow: {
+          'sm-soft': '0 1px 2px rgba(10,18,36,.06), 0 1px 0 rgba(10,18,36,.04)',
+          'md-soft': '0 8px 24px -8px rgba(10,18,36,.18), 0 4px 12px -4px rgba(10,18,36,.08)',
+          'lg-soft': '0 24px 60px -16px rgba(10,18,36,.32), 0 8px 24px -8px rgba(10,18,36,.16)',
+        },
+      }
+    }
+  };
+</script>
+</head>
+<body class="bg-cream dark:bg-navy-900 text-ink dark:text-cream font-body antialiased">
+<div data-chrome-header></div>
+<main>
+
+<section class="relative overflow-hidden pt-28 pb-20 bg-white dark:bg-navy-800 border-b border-ink/10 dark:border-white/10">
+  <div class="absolute bottom-0 inset-x-0 h-3/5 dotgrid text-mute" style="mask-image:linear-gradient(180deg,transparent,#000);-webkit-mask-image:linear-gradient(180deg,transparent,#000);" aria-hidden="true"></div>
+  <div class="absolute top-0 end-0 w-56 h-56 stripe-motif" style="mask-image:linear-gradient(225deg,#000,transparent 70%);-webkit-mask-image:linear-gradient(225deg,#000,transparent 70%);" aria-hidden="true"></div>
+  <div class="relative max-w-container mx-auto px-5 sm:px-10">
+    <div class="font-mono text-[11px] tracking-[.16em] uppercase text-mute mb-5"><a href="index.html" class="hover:text-orange-500" data-i18n="c.home">Home</a> / <span class="text-orange-500" data-i18n="gallery.crumb"></span></div>
+    <h1 class="font-display font-medium text-[clamp(40px,6.4vw,84px)] leading-[1.02] tracking-tight max-w-[900px] reveal in" data-i18n="gallery.h1"></h1>
+    <p class="mt-6 max-w-[680px] text-lg text-mute dark:text-cream/60 reveal in delay-1" data-i18n="gallery.sub"></p>
+  </div>
+</section>
+
+<section class="py-12 md:py-16">
+  <div class="max-w-container mx-auto px-5 sm:px-10">
+    <div class="flex flex-wrap gap-2 mb-12 pb-6 border-b border-ink/10 dark:border-white/10 reveal in">
+      <button data-gallery-cat="all" data-active="true" class="px-5 py-2.5 rounded-full text-sm font-medium border border-ink/15 dark:border-white/15 data-[active=true]:bg-orange-500 data-[active=true]:border-orange-500 data-[active=true]:text-white text-ink2 dark:text-cream/80 transition" data-i18n="gallery.catAll">All</button><button data-gallery-cat="Office"  class="px-5 py-2.5 rounded-full text-sm font-medium border border-ink/15 dark:border-white/15 data-[active=true]:bg-orange-500 data-[active=true]:border-orange-500 data-[active=true]:text-white text-ink2 dark:text-cream/80 transition" data-i18n="gallery.catOffice">Office</button><button data-gallery-cat="Events"  class="px-5 py-2.5 rounded-full text-sm font-medium border border-ink/15 dark:border-white/15 data-[active=true]:bg-orange-500 data-[active=true]:border-orange-500 data-[active=true]:text-white text-ink2 dark:text-cream/80 transition" data-i18n="gallery.catEvents">Events</button><button data-gallery-cat="Team"  class="px-5 py-2.5 rounded-full text-sm font-medium border border-ink/15 dark:border-white/15 data-[active=true]:bg-orange-500 data-[active=true]:border-orange-500 data-[active=true]:text-white text-ink2 dark:text-cream/80 transition" data-i18n="gallery.catTeam">Team</button><button data-gallery-cat="Bahrain"  class="px-5 py-2.5 rounded-full text-sm font-medium border border-ink/15 dark:border-white/15 data-[active=true]:bg-orange-500 data-[active=true]:border-orange-500 data-[active=true]:text-white text-ink2 dark:text-cream/80 transition" data-i18n="gallery.catBahrain">Bahrain</button>
+    </div>
+    <div data-gallery-grid class="grid grid-cols-2 lg:grid-cols-3 gap-6">
+      
+      <div data-tag="Office" class="reveal">
+        <div class="img-ph rounded-2xl cursor-pointer transition hover:scale-[1.02]" style="aspect-ratio:3/4">
+          <span class="ph-label">Reception, 2nd floor</span>
+          <div class="absolute bottom-3 start-3"><span class="px-3 py-1 rounded-full bg-black/40 backdrop-blur text-white text-[10px] font-mono tracking-[.18em] uppercase">Office</span></div>
+        </div>
+      </div>
+      <div data-tag="Bahrain" class="reveal">
+        <div class="img-ph rounded-2xl cursor-pointer transition hover:scale-[1.02]" style="aspect-ratio:4/3">
+          <span class="ph-label">Financial Harbour, dusk</span>
+          <div class="absolute bottom-3 start-3"><span class="px-3 py-1 rounded-full bg-black/40 backdrop-blur text-white text-[10px] font-mono tracking-[.18em] uppercase">Bahrain</span></div>
+        </div>
+      </div>
+      <div data-tag="Events" class="reveal">
+        <div class="img-ph rounded-2xl cursor-pointer transition hover:scale-[1.02]" style="aspect-ratio:1/1">
+          <span class="ph-label">MOIC seminar, 2024</span>
+          <div class="absolute bottom-3 start-3"><span class="px-3 py-1 rounded-full bg-black/40 backdrop-blur text-white text-[10px] font-mono tracking-[.18em] uppercase">Events</span></div>
+        </div>
+      </div>
+      <div data-tag="Team" class="reveal">
+        <div class="img-ph rounded-2xl cursor-pointer transition hover:scale-[1.02]" style="aspect-ratio:3/4">
+          <span class="ph-label">Senior partners</span>
+          <div class="absolute bottom-3 start-3"><span class="px-3 py-1 rounded-full bg-black/40 backdrop-blur text-white text-[10px] font-mono tracking-[.18em] uppercase">Team</span></div>
+        </div>
+      </div>
+      <div data-tag="Office" class="reveal">
+        <div class="img-ph rounded-2xl cursor-pointer transition hover:scale-[1.02]" style="aspect-ratio:4/3">
+          <span class="ph-label">Boardroom</span>
+          <div class="absolute bottom-3 start-3"><span class="px-3 py-1 rounded-full bg-black/40 backdrop-blur text-white text-[10px] font-mono tracking-[.18em] uppercase">Office</span></div>
+        </div>
+      </div>
+      <div data-tag="Bahrain" class="reveal">
+        <div class="img-ph rounded-2xl cursor-pointer transition hover:scale-[1.02]" style="aspect-ratio:1/1">
+          <span class="ph-label">Harbour Gate entrance</span>
+          <div class="absolute bottom-3 start-3"><span class="px-3 py-1 rounded-full bg-black/40 backdrop-blur text-white text-[10px] font-mono tracking-[.18em] uppercase">Bahrain</span></div>
+        </div>
+      </div>
+      <div data-tag="Events" class="reveal">
+        <div class="img-ph rounded-2xl cursor-pointer transition hover:scale-[1.02]" style="aspect-ratio:3/4">
+          <span class="ph-label">Client appreciation evening</span>
+          <div class="absolute bottom-3 start-3"><span class="px-3 py-1 rounded-full bg-black/40 backdrop-blur text-white text-[10px] font-mono tracking-[.18em] uppercase">Events</span></div>
+        </div>
+      </div>
+      <div data-tag="Team" class="reveal">
+        <div class="img-ph rounded-2xl cursor-pointer transition hover:scale-[1.02]" style="aspect-ratio:4/3">
+          <span class="ph-label">Consulting floor</span>
+          <div class="absolute bottom-3 start-3"><span class="px-3 py-1 rounded-full bg-black/40 backdrop-blur text-white text-[10px] font-mono tracking-[.18em] uppercase">Team</span></div>
+        </div>
+      </div>
+      <div data-tag="Bahrain" class="reveal">
+        <div class="img-ph rounded-2xl cursor-pointer transition hover:scale-[1.02]" style="aspect-ratio:1/1">
+          <span class="ph-label">Manama skyline</span>
+          <div class="absolute bottom-3 start-3"><span class="px-3 py-1 rounded-full bg-black/40 backdrop-blur text-white text-[10px] font-mono tracking-[.18em] uppercase">Bahrain</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="relative overflow-hidden border-t border-ink/10 dark:border-white/10">
+  <div class="absolute inset-0 z-0">
+    <svg viewBox="0 0 1200 400" preserveAspectRatio="xMidYMax slice" class="w-full h-full" aria-hidden="true">
+      <defs><linearGradient id="sky-cta" x1="0" x2="0" y1="0" y2="1"><stop offset="0%" stop-color="#06182F"/><stop offset="60%" stop-color="#0B2545"/><stop offset="100%" stop-color="#14315A"/></linearGradient></defs>
+      <rect width="1200" height="400" fill="url(#sky-cta)"/>
+      <g fill="rgba(255,255,255,.06)" stroke="rgba(255,255,255,.18)" stroke-width="1"><path d="M520,400 L520,140 Q550,80 580,140 L580,400 Z"/><path d="M620,400 L620,140 Q650,80 680,140 L680,400 Z"/></g>
+      <g fill="rgba(10,18,36,.55)" stroke="rgba(255,255,255,.12)">
+        <rect x="60" y="240" width="80" height="160"/><rect x="150" y="200" width="60" height="200"/>
+        <rect x="220" y="220" width="100" height="180"/><rect x="330" y="180" width="70" height="220"/>
+        <rect x="410" y="210" width="90" height="190"/><rect x="710" y="190" width="80" height="210"/>
+        <rect x="800" y="220" width="70" height="180"/><rect x="880" y="170" width="100" height="230"/>
+        <rect x="990" y="210" width="70" height="190"/><rect x="1070" y="230" width="80" height="170"/>
+      </g>
+    </svg>
+    <div class="absolute inset-0 bg-gradient-to-b from-navy-900/65 to-navy-900/95"></div>
+  </div>
+  <div class="relative z-10 max-w-container mx-auto px-5 sm:px-10 py-24 md:py-32 text-center text-cream">
+    <div class="eyebrow justify-center inline-flex text-orange-400 mb-6 reveal" data-i18n="home.finalLabel">Location</div>
+    <h2 class="font-display font-medium text-[clamp(32px,4vw,56px)] leading-[1.05] tracking-tight text-white max-w-[900px] mx-auto reveal delay-1" data-i18n="home.finalCtaTitle"></h2>
+    <p class="max-w-[600px] mx-auto mt-6 text-lg text-cream/80 reveal delay-2" data-i18n="home.finalCtaBody"></p>
+    <div class="mt-9 flex gap-3 justify-center flex-wrap reveal delay-3">
+      <a href="contact.html" class="btn-link inline-flex items-center gap-2.5 px-6 py-3.5 rounded-full bg-orange-500 hover:bg-orange-600 text-white font-semibold text-sm shadow-md-soft transition"><span data-i18n="home.finalCtaBtn"></span><span class="btn-arrow">→</span></a>
+    </div>
+  </div>
+</section></main>
+<div data-chrome-footer></div>
+<script src="assets/partials.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>
