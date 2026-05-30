@@ -10,17 +10,7 @@
         ['key' => 'Team',    'i18n' => 'gallery.catTeam'],
         ['key' => 'Bahrain', 'i18n' => 'gallery.catBahrain'],
     ];
-    $items = [
-        ['tag' => 'Office',  'label' => 'Reception, 2nd floor',     'ratio' => '3/4'],
-        ['tag' => 'Bahrain', 'label' => 'Financial Harbour, dusk',  'ratio' => '4/3'],
-        ['tag' => 'Events',  'label' => 'MOIC seminar, 2024',       'ratio' => '1/1'],
-        ['tag' => 'Team',    'label' => 'Senior partners',          'ratio' => '3/4'],
-        ['tag' => 'Office',  'label' => 'Boardroom',                'ratio' => '4/3'],
-        ['tag' => 'Bahrain', 'label' => 'Harbour Gate entrance',    'ratio' => '1/1'],
-        ['tag' => 'Events',  'label' => 'Client appreciation evening', 'ratio' => '3/4'],
-        ['tag' => 'Team',    'label' => 'Consulting floor',         'ratio' => '4/3'],
-        ['tag' => 'Bahrain', 'label' => 'Manama skyline',           'ratio' => '1/1'],
-    ];
+    // Gallery items come from the database (App\Models\GalleryItem via Front\GalleryController).
 @endphp
 
 @section('content')
@@ -43,10 +33,11 @@
     </div>
     <div data-gallery-grid class="grid grid-cols-2 lg:grid-cols-3 gap-6">
       @foreach ($items as $item)
-        <div data-tag="{{ $item['tag'] }}" class="reveal">
-          <div class="img-ph rounded-2xl cursor-pointer transition hover:scale-[1.02]" style="aspect-ratio:{{ $item['ratio'] }}">
-            <span class="ph-label">{{ $item['label'] }}</span>
-            <div class="absolute bottom-3 start-3"><span class="px-3 py-1 rounded-full bg-black/40 backdrop-blur text-white text-[10px] font-mono tracking-[.18em] uppercase">{{ $item['tag'] }}</span></div>
+        <div data-tag="{{ $item->category }}" class="reveal">
+          <div class="@if(!$item->imageUrl()) img-ph @endif relative rounded-2xl overflow-hidden cursor-pointer transition hover:scale-[1.02] @if($item->imageUrl()) bg-cover bg-center @endif"
+               style="aspect-ratio:{{ $item->ratio }};@if($item->imageUrl()) background-image:url('{{ $item->imageUrl() }}')@endif">
+            @unless ($item->imageUrl())<span class="ph-label">{{ $item->label }}</span>@endunless
+            <div class="absolute bottom-3 start-3"><span class="px-3 py-1 rounded-full bg-black/40 backdrop-blur text-white text-[10px] font-mono tracking-[.18em] uppercase">{{ $item->category }}</span></div>
           </div>
         </div>
       @endforeach

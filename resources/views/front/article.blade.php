@@ -1,42 +1,58 @@
 @extends('front.layout', ['page' => 'blog'])
 
 @php
-    // Single demo article — tied to the featured guide slug.
-    $articleSlug = 'top-business-management-consultancy-bahrain';
+    $catLabel = isset($catKeys[$post->category]) ? __('front.'.$catKeys[$post->category]) : $post->category;
 @endphp
 
-@section('title', __('front.posts.'.$articleSlug.'.title').' · LevantBMS')
+@section('title', $post->title.' · LevantBMS')
+@section('meta_description', $post->excerpt)
+
+@push('head')
+<style>
+  .article-body { font-size: 1.125rem; line-height: 1.75; }
+  .article-body p { margin-bottom: 1.25rem; }
+  .article-body h2, .article-body h3 { font-family: 'Sora', sans-serif; font-weight: 600; letter-spacing: -.01em; margin: 2.25rem 0 1.1rem; line-height: 1.2; }
+  .article-body h2 { font-size: 1.75rem; }
+  .article-body h3 { font-size: 1.4rem; }
+  .article-body ul, .article-body ol { margin: 0 0 1.25rem 1.25rem; }
+  .article-body li { margin-bottom: .4rem; }
+  .article-body blockquote { margin: 2rem 0; padding-inline-start: 1.5rem; border-inline-start: 3px solid #F58220; font-family: 'Fraunces', serif; font-style: italic; font-weight: 300; font-size: 1.5rem; line-height: 1.4; }
+  .article-body a { color: #F58220; text-decoration: underline; }
+  .article-body table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: .95rem; }
+  .article-body th, .article-body td { border: 1px solid rgba(10,18,36,.12); padding: .6rem .85rem; text-align: start; vertical-align: top; }
+  .article-body thead th { background: rgba(31,66,117,.06); font-family: 'Sora', sans-serif; font-weight: 600; font-size: .8rem; text-transform: uppercase; letter-spacing: .04em; }
+  .dark .article-body th, .dark .article-body td { border-color: rgba(255,255,255,.14); }
+  .dark .article-body thead th { background: rgba(255,255,255,.06); }
+  .article-body h2:first-child, .article-body h3:first-child { margin-top: 0; }
+</style>
+@endpush
 
 @section('content')
 <section class="pt-28 pb-12">
   <div class="max-w-[820px] mx-auto px-5 sm:px-10">
-    <div class="font-mono text-[11px] tracking-[.16em] uppercase text-mute mb-8 reveal in"><a href="{{ route('front.blog') }}" class="hover:text-orange-500">{{ __('front.blog.crumb') }}</a> / <span class="text-orange-500">{{ __('front.blog.catGuides') }}</span></div>
-    <h1 class="font-display font-medium text-[clamp(36px,5vw,60px)] leading-[1.05] tracking-tight mb-8 reveal in delay-1">{{ __('front.posts.'.$articleSlug.'.title') }}</h1>
+    <div class="font-mono text-[11px] tracking-[.16em] uppercase text-mute mb-8 reveal in"><a href="{{ route('front.blog') }}" class="hover:text-orange-500">{{ __('front.blog.crumb') }}</a> / <span class="text-orange-500">{{ $catLabel }}</span></div>
+    <h1 class="font-display font-medium text-[clamp(36px,5vw,60px)] leading-[1.05] tracking-tight mb-8 reveal in delay-1">{{ $post->title }}</h1>
     <div class="flex flex-wrap gap-4 items-center pb-8 border-b border-ink/10 dark:border-white/10 font-mono text-xs text-mute tracking-wider reveal in delay-2">
-      <span>{{ __('front.article.author') }}</span><span>·</span><span>{{ __('front.posts.'.$articleSlug.'.date') }}</span><span>·</span><span>8 {{ __('front.c.minread') }}</span>
+      <span>{{ __('front.article.author') }}</span><span>·</span><span>{{ optional($post->published_at)->translatedFormat('F j, Y') }}</span><span>·</span><span>{{ $post->read_minutes }} {{ __('front.c.minread') }}</span>
     </div>
   </div>
 </section>
 
 <section class="pb-12">
   <div class="max-w-[1100px] mx-auto px-5 sm:px-10">
-    <div class="img-ph aspect-[16/8] rounded-2xl reveal"><span class="ph-label">cover · {{ __('front.blog.catGuides') }}</span></div>
+    @if ($post->coverUrl())
+      <div class="aspect-[16/8] rounded-2xl bg-cover bg-center reveal" style="background-image:url('{{ $post->coverUrl() }}')"></div>
+    @else
+      <div class="img-ph aspect-[16/8] rounded-2xl reveal"><span class="ph-label">cover · {{ $catLabel }}</span></div>
+    @endif
   </div>
 </section>
 
 <section class="pb-20">
   <div class="max-w-[720px] mx-auto px-5 sm:px-10">
-    <p class="reveal text-2xl font-serif italic font-light leading-snug pb-9 mb-9 border-b border-ink/10 dark:border-white/10 text-ink dark:text-cream">{{ __('front.article.body.lead') }}</p>
-    <p class="reveal text-lg leading-[1.75] text-ink2 dark:text-cream/80 mb-5">{{ __('front.article.body.p1') }}</p>
-    <h3 class="reveal font-display font-semibold text-2xl tracking-tight mt-9 mb-5">{{ __('front.article.body.h1') }}</h3>
-    <p class="reveal text-lg leading-[1.75] text-ink2 dark:text-cream/80 mb-5">{{ __('front.article.body.p2') }}</p>
-    <h3 class="reveal font-display font-semibold text-2xl tracking-tight mt-9 mb-5">{{ __('front.article.body.h2') }}</h3>
-    <p class="reveal text-lg leading-[1.75] text-ink2 dark:text-cream/80 mb-5">{{ __('front.article.body.p3') }}</p>
-    <blockquote class="reveal my-9 ps-6 border-s-[3px] border-orange-500 font-serif italic font-light text-2xl leading-snug">{{ __('front.article.body.quote') }}</blockquote>
-    <h3 class="reveal font-display font-semibold text-2xl tracking-tight mt-9 mb-5">{{ __('front.article.body.h3') }}</h3>
-    <p class="reveal text-lg leading-[1.75] text-ink2 dark:text-cream/80 mb-5">{{ __('front.article.body.p4') }}</p>
-    <h3 class="reveal font-display font-semibold text-2xl tracking-tight mt-9 mb-5">{{ __('front.article.body.h4') }}</h3>
-    <p class="reveal text-lg leading-[1.75] text-ink2 dark:text-cream/80 mb-5">{{ __('front.article.body.p5') }}</p>
+    <div class="article-body reveal text-ink2 dark:text-cream/80">
+      {!! $post->body !!}
+    </div>
   </div>
 </section>
 

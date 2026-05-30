@@ -44,8 +44,8 @@
       <div>
         <h5 class="font-mono text-[11px] tracking-[.18em] uppercase text-orange-500 mb-4">{{ __('front.c.contactHead') }}</h5>
         <ul class="space-y-2.5">
-          <li><a href="tel:+97336314567" class="text-cream/75 hover:text-orange-500 text-sm transition">+973 36314567</a></li>
-          <li><a href="tel:+97366303050" class="text-cream/75 hover:text-orange-500 text-sm transition">+973 66303050</a></li>
+          <li><a href="tel:+97336314567" dir="ltr" style="unicode-bidi:plaintext" class="inline-block text-cream/75 hover:text-orange-500 text-sm transition">+973 36314567</a></li>
+          <li><a href="tel:+97366303050" dir="ltr" style="unicode-bidi:plaintext" class="inline-block text-cream/75 hover:text-orange-500 text-sm transition">+973 66303050</a></li>
           <li><a href="mailto:info@levantbms.com" class="text-cream/75 hover:text-orange-500 text-sm transition">info@levantbms.com</a></li>
         </ul>
       </div>

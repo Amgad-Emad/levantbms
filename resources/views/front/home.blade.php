@@ -122,13 +122,14 @@
         <p class="max-w-[480px] text-lg text-mute dark:text-cream/60 reveal delay-2">{{ __('front.home.servicesSub') }}</p>
       </div>
 
+      @php $homeServices = \App\Models\Service::where('is_published', true)->orderBy('position')->orderBy('id')->get(); @endphp
       <div class="reveal">
-        @foreach ([1,2,3] as $n)
+        @foreach ($homeServices as $service)
           <a href="{{ route('front.services') }}" class="svc-item group grid grid-cols-[60px_1fr_auto] gap-6 items-center py-8 border-t border-ink/10 dark:border-white/10 cursor-pointer">
-            <div class="font-serif italic font-light text-4xl text-orange-500">{{ str_pad($n, 2, '0', STR_PAD_LEFT) }}</div>
+            <div class="font-serif italic font-light text-4xl text-orange-500">{{ $service->code ?: str_pad((string) $loop->iteration, 2, '0', STR_PAD_LEFT) }}</div>
             <div>
-              <div class="font-mono text-[10px] uppercase tracking-[.18em] text-mute mb-2">{{ __('front.svc'.$n.'.tag') }}</div>
-              <div class="font-display text-[clamp(22px,2.2vw,32px)] font-medium tracking-tight group-hover:text-orange-500 transition">{{ __('front.svc'.$n.'.title') }}</div>
+              <div class="font-mono text-[10px] uppercase tracking-[.18em] text-mute mb-2">{{ $service->tag }}</div>
+              <div class="font-display text-[clamp(22px,2.2vw,32px)] font-medium tracking-tight group-hover:text-orange-500 transition">{{ $service->title }}</div>
             </div>
             <div class="text-mute group-hover:text-orange-500 transition btn-arrow"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 5l7 7-7 7"/></svg></div>
           </a>

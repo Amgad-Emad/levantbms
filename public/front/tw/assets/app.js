@@ -161,10 +161,25 @@ function initApp() {
   // Contact form
   const form = document.querySelector("[data-contact-form]");
   if (form) {
-    form.addEventListener("submit", (e) => {
+    form.addEventListener("submit", async (e) => {
       e.preventDefault();
-      document.querySelector("[data-form-wrap]").classList.add("hidden");
-      document.querySelector("[data-form-success]").classList.remove("hidden");
+      const btn = form.querySelector('button[type="submit"]');
+      if (btn) btn.disabled = true;
+      try {
+        const res = await fetch(form.action, {
+          method: "POST",
+          headers: { "X-Requested-With": "XMLHttpRequest", Accept: "application/json" },
+          body: new FormData(form),
+        });
+        if (res.ok) {
+          document.querySelector("[data-form-wrap]").classList.add("hidden");
+          document.querySelector("[data-form-success]").classList.remove("hidden");
+        } else if (btn) {
+          btn.disabled = false;
+        }
+      } catch (_) {
+        if (btn) btn.disabled = false;
+      }
     });
     document.querySelectorAll("[data-form-reset]").forEach((b) =>
       b.addEventListener("click", () => {

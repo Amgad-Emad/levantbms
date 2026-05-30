@@ -8,8 +8,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>@yield('title', 'LevantBMS — Business Consultancy in Bahrain')</title>
-<meta name="description" content="@yield('meta_description', __('front.home.sub'))" />
+@include('front.partials.seo')
 <link rel="stylesheet" href="{{ asset('front/tw/assets/style.css') }}" />
 <script src="https://cdn.tailwindcss.com"></script>
 <script>

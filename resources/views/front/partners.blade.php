@@ -15,34 +15,22 @@
 
 <section class="py-12 md:py-16">
   <div class="max-w-container mx-auto px-5 sm:px-10 flex flex-col gap-12">
-    <!-- Partner 1 -->
-    <div class="grid lg:grid-cols-[1fr_1.2fr] gap-12 items-center py-12 reveal">
-      <div class="img-ph aspect-[4/3] rounded-2xl"><span class="ph-label">OrangeHRM · brand asset</span></div>
-      <div>
-        <div class="eyebrow mb-4"><span>{{ __('front.p1.tag') }}</span> · <span>{{ __('front.p1.region') }}</span></div>
-        <h2 class="font-display font-medium text-[clamp(32px,4vw,52px)] tracking-tight mb-6">{{ __('front.p1.name') }}</h2>
-        <p class="text-lg text-mute dark:text-cream/60 leading-relaxed mb-6">{{ __('front.p1.fullBody') }}</p>
-        <div class="flex flex-wrap gap-2">
-          @foreach ([1,2,3,4,5] as $i)
-            <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white dark:bg-navy-700 border border-ink/10 dark:border-white/10 text-xs font-medium"><span class="w-1.5 h-1.5 rounded-full bg-orange-500"></span><span>{{ __('front.p1.s'.$i) }}</span></span>
-          @endforeach
-        </div>
+    @foreach ($partners as $partner)
+      @php $reversed = $loop->odd; @endphp
+      <div class="grid lg:grid-cols-2 gap-12 items-center py-12 reveal @unless($loop->first) border-t border-ink/10 dark:border-white/10 @endunless">
+        @php
+          $media = '<div class="'.($partner->logoUrl() ? 'bg-cover bg-center' : 'img-ph').' aspect-[4/3] rounded-2xl" style="'.($partner->logoUrl() ? "background-image:url('".$partner->logoUrl()."');background-size:contain;background-repeat:no-repeat;" : '').'">'.($partner->logoUrl() ? '' : '<span class="ph-label">'.e($partner->name).' · brand asset</span>').'</div>';
+          $text = '';
+        @endphp
+        @if ($reversed)
+          <div class="order-2 lg:order-1">@include('front.partials.partner-text', ['partner' => $partner])</div>
+          <div class="order-1 lg:order-2">{!! $media !!}</div>
+        @else
+          <div>{!! $media !!}</div>
+          <div>@include('front.partials.partner-text', ['partner' => $partner])</div>
+        @endif
       </div>
-    </div>
-    <!-- Partner 2 (reversed) -->
-    <div class="grid lg:grid-cols-[1.2fr_1fr] gap-12 items-center py-12 border-t border-ink/10 dark:border-white/10 reveal">
-      <div>
-        <div class="eyebrow mb-4"><span>{{ __('front.p2.tag') }}</span> · <span>{{ __('front.p2.region') }}</span></div>
-        <h2 class="font-display font-medium text-[clamp(32px,4vw,52px)] tracking-tight mb-6">{{ __('front.p2.name') }}</h2>
-        <p class="text-lg text-mute dark:text-cream/60 leading-relaxed mb-6">{{ __('front.p2.fullBody') }}</p>
-        <div class="flex flex-wrap gap-2">
-          @foreach ([1,2,3,4] as $i)
-            <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white dark:bg-navy-700 border border-ink/10 dark:border-white/10 text-xs font-medium"><span class="w-1.5 h-1.5 rounded-full bg-orange-500"></span><span>{{ __('front.p2.s'.$i) }}</span></span>
-          @endforeach
-        </div>
-      </div>
-      <div class="img-ph aspect-[4/3] rounded-2xl"><span class="ph-label">EQUITI · brand asset</span></div>
-    </div>
+    @endforeach
   </div>
 </section>
 

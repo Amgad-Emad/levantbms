@@ -2,6 +2,10 @@
 
 @section('title', __('front.contact.crumb').' · LevantBMS')
 
+@php
+    $services = \App\Models\Service::where('is_published', true)->orderBy('position')->orderBy('id')->get();
+@endphp
+
 @section('content')
 <section class="relative overflow-hidden pt-28 pb-20 bg-white dark:bg-navy-800 border-b border-ink/10 dark:border-white/10">
   <div class="absolute bottom-0 inset-x-0 h-3/5 dotgrid text-mute" style="mask-image:linear-gradient(180deg,transparent,#000);-webkit-mask-image:linear-gradient(180deg,transparent,#000);" aria-hidden="true"></div>
@@ -21,8 +25,13 @@
         <div class="eyebrow mb-4">{{ __('front.contact.formTitle') }}</div>
         <h2 class="font-display font-medium text-[clamp(26px,2.8vw,36px)] mb-8 tracking-tight">{{ __('front.contact.heading') }}</h2>
 
-        <form data-contact-form data-form-wrap class="flex flex-col gap-5">
+        <form data-contact-form data-form-wrap method="POST" action="{{ route('front.contact.store') }}" class="flex flex-col gap-5">
           @csrf
+          {{-- Bot protection: honeypot (hidden from humans) + encrypted render timestamp --}}
+          <div aria-hidden="true" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden" tabindex="-1">
+            <label>Website<input type="text" name="website" tabindex="-1" autocomplete="off" /></label>
+          </div>
+          <input type="hidden" name="_ts" value="{{ \Illuminate\Support\Facades\Crypt::encryptString((string) time()) }}" />
           <div class="grid sm:grid-cols-2 gap-5">
             <label class="block">
               <span class="font-mono text-[10px] tracking-[.12em] uppercase text-orange-500 mb-1.5 block">{{ __('front.contact.f.name') }}</span>
@@ -46,10 +55,10 @@
           <label class="block">
             <span class="font-mono text-[10px] tracking-[.12em] uppercase text-orange-500 mb-1.5 block">{{ __('front.contact.f.topic') }}</span>
             <select name="topic" class="w-full px-4 py-3.5 bg-transparent border border-ink/15 dark:border-white/15 rounded-lg outline-none focus:border-orange-500 transition appearance-none">
-              <option>{{ __('front.svc1.title') }}</option>
-              <option>{{ __('front.svc2.title') }}</option>
-              <option>{{ __('front.svc3.title') }}</option>
-              <option>Other</option>
+              @foreach ($services as $service)
+                <option value="{{ $service->title }}">{{ $service->title }}</option>
+              @endforeach
+              <option value="{{ __('front.svc.other') }}">{{ __('front.svc.other') }}</option>
             </select>
           </label>
           <label class="block">
@@ -70,38 +79,45 @@
 
       <!-- Info column -->
       <div class="flex flex-col gap-4 reveal delay-1">
-        <a href="tel:+97336314567"  class="grid grid-cols-[56px_1fr_auto] gap-5 items-center p-7 bg-white dark:bg-navy-800 border border-ink/10 dark:border-white/10 rounded-2xl hover:border-orange-500 hover:translate-x-1 transition">
+        @php
+            $sPhone1 = \App\Models\Setting::get('contact.phone_primary', '+973 36314567');
+            $sPhone2 = \App\Models\Setting::get('contact.phone_secondary', '+973 66303050');
+            $sEmail = \App\Models\Setting::get('contact.email', 'info@levantbms.com');
+            $sWa = \App\Models\Setting::get('contact.whatsapp', '97336314567');
+            $sMap = \App\Models\Setting::get('contact.map_url', '#');
+        @endphp
+        <a href="tel:{{ preg_replace('/\s+/', '', $sPhone1) }}"  class="grid grid-cols-[56px_1fr_auto] gap-5 items-center p-7 bg-white dark:bg-navy-800 border border-ink/10 dark:border-white/10 rounded-2xl hover:border-orange-500 hover:translate-x-1 transition">
           <div class="w-12 h-12 rounded-xl bg-cream dark:bg-navy-700 border border-ink/10 dark:border-white/10 flex items-center justify-center text-orange-500">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z"/></svg>
           </div>
           <div>
             <div class="font-mono text-[10px] tracking-[.18em] uppercase text-mute mb-1.5">{{ __('front.contact.callUs') }}</div>
-            <div class="font-semibold text-sm">+973 36314567</div>
-            <div class="text-xs text-mute mt-0.5">+973 66303050</div>
+            <div class="font-semibold text-sm" dir="ltr" style="unicode-bidi:plaintext">{{ $sPhone1 }}</div>
+            <div class="text-xs text-mute mt-0.5" dir="ltr" style="unicode-bidi:plaintext">{{ $sPhone2 }}</div>
           </div>
           <div class="text-mute btn-arrow">→</div>
         </a>
-        <a href="mailto:info@levantbms.com"  class="grid grid-cols-[56px_1fr_auto] gap-5 items-center p-7 bg-white dark:bg-navy-800 border border-ink/10 dark:border-white/10 rounded-2xl hover:border-orange-500 hover:translate-x-1 transition">
+        <a href="mailto:{{ $sEmail }}"  class="grid grid-cols-[56px_1fr_auto] gap-5 items-center p-7 bg-white dark:bg-navy-800 border border-ink/10 dark:border-white/10 rounded-2xl hover:border-orange-500 hover:translate-x-1 transition">
           <div class="w-12 h-12 rounded-xl bg-cream dark:bg-navy-700 border border-ink/10 dark:border-white/10 flex items-center justify-center text-orange-500">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
           </div>
           <div>
             <div class="font-mono text-[10px] tracking-[.18em] uppercase text-mute mb-1.5">{{ __('front.contact.writeUs') }}</div>
-            <div class="font-semibold text-sm">info@levantbms.com</div>
+            <div class="font-semibold text-sm">{{ $sEmail }}</div>
           </div>
           <div class="text-mute btn-arrow">→</div>
         </a>
-        <a href="https://wa.me/97336314567" target="_blank" rel="noreferrer" class="grid grid-cols-[56px_1fr_auto] gap-5 items-center p-7 bg-white dark:bg-navy-800 border border-ink/10 dark:border-white/10 rounded-2xl hover:border-orange-500 hover:translate-x-1 transition">
+        <a href="https://wa.me/{{ $sWa }}" target="_blank" rel="noreferrer" class="grid grid-cols-[56px_1fr_auto] gap-5 items-center p-7 bg-white dark:bg-navy-800 border border-ink/10 dark:border-white/10 rounded-2xl hover:border-orange-500 hover:translate-x-1 transition">
           <div class="w-12 h-12 rounded-xl bg-cream dark:bg-navy-700 border border-ink/10 dark:border-white/10 flex items-center justify-center text-orange-500">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448L.057 24z"/></svg>
           </div>
           <div>
             <div class="font-mono text-[10px] tracking-[.18em] uppercase text-mute mb-1.5">{{ __('front.contact.whatsapp') }}</div>
-            <div class="font-semibold text-sm">+973 36314567</div>
+            <div class="font-semibold text-sm" dir="ltr" style="unicode-bidi:plaintext">{{ $sPhone1 }}</div>
           </div>
           <div class="text-mute btn-arrow">→</div>
         </a>
-        <a href="https://www.google.com/maps/place/Levant+Business+Management+Services,+Bahrain.+Professional+Body/" target="_blank" rel="noreferrer" class="grid grid-cols-[56px_1fr_auto] gap-5 items-center p-7 bg-white dark:bg-navy-800 border border-ink/10 dark:border-white/10 rounded-2xl hover:border-orange-500 hover:translate-x-1 transition">
+        <a href="{{ $sMap }}" target="_blank" rel="noreferrer" class="grid grid-cols-[56px_1fr_auto] gap-5 items-center p-7 bg-white dark:bg-navy-800 border border-ink/10 dark:border-white/10 rounded-2xl hover:border-orange-500 hover:translate-x-1 transition">
           <div class="w-12 h-12 rounded-xl bg-cream dark:bg-navy-700 border border-ink/10 dark:border-white/10 flex items-center justify-center text-orange-500">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
           </div>
