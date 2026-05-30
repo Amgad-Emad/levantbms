@@ -76,22 +76,19 @@
                 </label>
 
                 <label class="block">
-                    <div class="flex items-center justify-between mb-1.5">
-                        <span class="font-mono text-[10px] tracking-[.12em] uppercase text-orange-500">Password</span>
-                        @if (Route::has('password.request'))
-                            <a href="{{ route('password.request') }}" class="text-xs text-mute hover:text-orange-500 transition">Forgot password?</a>
-                        @endif
+                    <span class="font-mono text-[10px] tracking-[.12em] uppercase text-orange-500 mb-1.5 block">Password</span>
+                    <div class="relative">
+                        <input type="password" name="password" required autocomplete="current-password" data-password-input
+                               class="w-full px-4 py-3.5 pe-12 bg-white border border-ink/15 rounded-lg outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition" />
+                        <button type="button" data-toggle-password aria-label="Show password"
+                                class="absolute inset-y-0 end-2 my-auto h-9 w-9 inline-flex items-center justify-center text-mute hover:text-orange-500 transition">
+                            <svg data-eye width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>
+                            <svg data-eye-off class="hidden" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-6.5 0-10-7-10-7a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c6.5 0 10 7 10 7a18.5 18.5 0 0 1-2.16 3.19M1 1l22 22"/><path d="M9.88 9.88a3 3 0 1 0 4.24 4.24"/></svg>
+                        </button>
                     </div>
-                    <input type="password" name="password" required autocomplete="current-password"
-                           class="w-full px-4 py-3.5 bg-white border border-ink/15 rounded-lg outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition" />
                 </label>
 
-                <label class="inline-flex items-center gap-2.5 cursor-pointer select-none">
-                    <input type="checkbox" name="remember" class="w-4 h-4 rounded border-ink/25 text-orange-500 focus:ring-orange-500/30">
-                    <span class="text-sm text-ink2">Keep me signed in</span>
-                </label>
-
-                <button type="submit" class="btn-link inline-flex items-center justify-center gap-2.5 mt-1 px-6 py-3.5 rounded-full bg-orange-500 hover:bg-orange-600 text-white font-semibold text-sm shadow-md-soft transition">
+                <button type="submit" class="btn-link inline-flex items-center justify-center gap-2.5 mt-2 px-6 py-3.5 rounded-full bg-orange-500 hover:bg-orange-600 text-white font-semibold text-sm shadow-md-soft transition">
                     <span>Sign in</span><span class="btn-arrow">→</span>
                 </button>
             </form>
@@ -103,4 +100,17 @@
     </div>
 
 </div>
+
+<script>
+    document.querySelectorAll('[data-toggle-password]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+            var input = btn.closest('.relative').querySelector('[data-password-input]');
+            var hidden = input.type === 'password';
+            input.type = hidden ? 'text' : 'password';
+            btn.querySelector('[data-eye]').classList.toggle('hidden', hidden);
+            btn.querySelector('[data-eye-off]').classList.toggle('hidden', !hidden);
+            btn.setAttribute('aria-label', hidden ? 'Hide password' : 'Show password');
+        });
+    });
+</script>
 </x-auth-layout>
