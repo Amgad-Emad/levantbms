@@ -80,7 +80,13 @@
 
             <div class="card"><div class="card-header"><h5 class="card-title mb-0">Social share image</h5></div>
                 <div class="card-body">
-                    @if ($seo->ogImageUrl())<img src="{{ $seo->ogImageUrl() }}" class="img-fluid rounded mb-2" alt="OG image">@endif
+                    @if ($seo->ogImageUrl())
+                        <img src="{{ $seo->ogImageUrl() }}" class="img-fluid rounded mb-2" alt="OG image">
+                        <div class="form-check mb-2">
+                            <input type="checkbox" class="form-check-input" id="remove_og_image" name="remove_og_image" value="1">
+                            <label class="form-check-label text-danger small" for="remove_og_image">Remove current image</label>
+                        </div>
+                    @endif
                     <input type="file" name="og_image" accept="image/*" class="form-control">
                     <small class="text-muted">Recommended 1200×630px. Show the MOIC badge, “20+ Years”, and the BFH address.</small>
                 </div>

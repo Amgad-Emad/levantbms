@@ -64,6 +64,7 @@ class PartnerController extends Controller
             'position' => ['nullable', 'integer', 'min:0'],
             'is_published' => ['nullable', 'boolean'],
             'logo' => ['nullable', 'image', 'max:5120'],
+            'remove_logo' => ['nullable', 'boolean'],
         ]);
     }
 
@@ -89,6 +90,8 @@ class PartnerController extends Controller
         if ($request->hasFile('logo')) {
             $partner->clearMediaCollection('logo');
             $partner->addMediaFromRequest('logo')->toMediaCollection('logo');
+        } elseif ($request->boolean('remove_logo')) {
+            $partner->clearMediaCollection('logo');
         }
     }
 

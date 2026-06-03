@@ -117,6 +117,10 @@
                 <div class="card-body">
                     @if ($post->exists && $post->coverUrl())
                         <img src="{{ $post->coverUrl() }}" class="img-fluid rounded mb-2" alt="cover">
+                        <div class="form-check mb-2">
+                            <input type="checkbox" class="form-check-input" id="remove_cover" name="remove_cover" value="1">
+                            <label class="form-check-label text-danger small" for="remove_cover">Remove current cover</label>
+                        </div>
                     @endif
                     <input type="file" name="cover" accept="image/*" class="form-control">
                     <small class="text-muted">JPG/PNG/WebP, up to 5 MB.</small>

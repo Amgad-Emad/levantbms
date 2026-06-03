@@ -45,7 +45,20 @@
           </div>
         </div>
 
-        <!-- Stamp cards -->
+        @php $hero = \App\Models\PageImage::url('home', 'hero'); @endphp
+        @if ($hero)
+        <!-- Hero image (set via CMS → Pages → Home → Hero image) -->
+        <div class="relative h-[520px] hidden lg:block reveal delay-2">
+          <div class="absolute inset-0 rounded-2xl bg-cover bg-center shadow-md-soft border border-ink/10 dark:border-white/10" style="background-image:url('{{ $hero }}')"></div>
+          <div class="absolute -bottom-5 -start-5 w-36 h-36 rounded-full border border-dashed border-orange-500 flex items-center justify-center bg-cream dark:bg-navy-900">
+            <div class="text-center">
+              <div class="font-serif italic font-light text-3xl text-orange-500 leading-none">20+</div>
+              <div class="font-mono text-[9px] uppercase tracking-[.18em] text-mute mt-1">{{ __('front.home.yearsLabel') }}</div>
+            </div>
+          </div>
+        </div>
+        @else
+        <!-- Stamp cards (fallback when no hero image is set in the CMS) -->
         <div class="relative h-[520px] hidden lg:block reveal delay-2">
           <div class="absolute top-0 start-10 w-[300px] float-0 bg-white dark:bg-navy-700 border border-ink/10 dark:border-white/10 rounded-2xl p-5 shadow-md-soft">
             <div class="font-mono text-[10px] uppercase tracking-[.18em] text-orange-500 mb-1.5">{{ __('front.home.stamp1Tag') }}</div>
@@ -72,6 +85,7 @@
             </div>
           </div>
         </div>
+        @endif
       </div>
     </div>
   </section>

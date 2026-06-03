@@ -22,7 +22,13 @@
         <div class="col-lg-6">
             <div class="card"><div class="card-header"><h5 class="card-title mb-0">Image</h5></div>
                 <div class="card-body">
-                    @if ($item->exists && $item->imageUrl())<img src="{{ $item->imageUrl() }}" class="img-fluid rounded mb-2" alt="">@endif
+                    @if ($item->exists && $item->imageUrl())
+                        <img src="{{ $item->imageUrl() }}" class="img-fluid rounded mb-2" alt="">
+                        <div class="form-check mb-2">
+                            <input type="checkbox" class="form-check-input" id="remove_image" name="remove_image" value="1">
+                            <label class="form-check-label text-danger small" for="remove_image">Remove current image</label>
+                        </div>
+                    @endif
                     <input type="file" name="image" accept="image/*" class="form-control" {{ $item->exists ? '' : 'required' }}>
                     <small class="text-muted">JPG/PNG/WebP, up to 5 MB.</small>
                 </div>

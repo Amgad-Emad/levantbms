@@ -61,6 +61,7 @@ class SeoController extends Controller
             'robots' => ['required', 'string', 'max:60'],
             'canonical' => ['nullable', 'url', 'max:255'],
             'og_image' => ['nullable', 'image', 'max:5120'],
+            'remove_og_image' => ['nullable', 'boolean'],
         ]);
 
         $seo = SeoMeta::firstOrNew(['page' => $page]);
@@ -75,6 +76,8 @@ class SeoController extends Controller
         if ($request->hasFile('og_image')) {
             $seo->clearMediaCollection('og');
             $seo->addMediaFromRequest('og_image')->toMediaCollection('og');
+        } elseif ($request->boolean('remove_og_image')) {
+            $seo->clearMediaCollection('og');
         }
 
         return redirect()->route('dashboard.seo.edit', $page)

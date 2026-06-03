@@ -48,6 +48,12 @@
                                     </div>
                                     <div class="flex-grow-1">
                                         <input type="file" name="images[{{ $slot }}]" accept="image/*" class="form-control form-control-sm mb-1">
+                                        @if ($current && $current->imageUrl('thumb'))
+                                            <div class="form-check mb-1">
+                                                <input type="checkbox" class="form-check-input" id="remove-img-{{ $slot }}" name="remove_images[{{ $slot }}]" value="1">
+                                                <label class="form-check-label text-danger small" for="remove-img-{{ $slot }}">Remove current image</label>
+                                            </div>
+                                        @endif
                                         <small class="text-muted">{{ $meta[1] }}</small>
                                     </div>
                                 </div>
@@ -65,10 +71,17 @@
                 </div>
                 <div class="card-body d-flex flex-column gap-3">
                     @foreach ($rows as $row)
+                        @php
+                            $hint = \App\Translation\ListContent::hint($row->key);
+                            $textareaRows = $hint ? 8 : 2;
+                        @endphp
                         <div class="row align-items-start">
                             <div class="col-lg-3">
                                 <label class="form-label fw-medium mb-0">{{ Str::headline(Str::afterLast($row->key, '.')) }}</label>
                                 <div class="fs-11 text-muted font-monospace">{{ $row->key }}</div>
+                                @if ($hint)
+                                    <div class="fs-11 text-info mt-1"><i class="ti ti-list-details me-1"></i>{{ $hint }}</div>
+                                @endif
                             </div>
                             <div class="col-lg-9">
                                 <div class="row g-2">
@@ -76,7 +89,7 @@
                                         <div class="input-group input-group-sm">
                                             <span class="input-group-text fw-semibold">EN</span>
                                             @if ($row->type === 'textarea')
-                                                <textarea name="values[{{ $row->id }}][en]" rows="2" class="form-control">{{ $row->values['en'] ?? '' }}</textarea>
+                                                <textarea name="values[{{ $row->id }}][en]" rows="{{ $textareaRows }}" class="form-control">{{ $row->values['en'] ?? '' }}</textarea>
                                             @else
                                                 <input type="text" name="values[{{ $row->id }}][en]" value="{{ $row->values['en'] ?? '' }}" class="form-control" />
                                             @endif
@@ -86,7 +99,7 @@
                                         <div class="input-group input-group-sm">
                                             <span class="input-group-text fw-semibold">AR</span>
                                             @if ($row->type === 'textarea')
-                                                <textarea name="values[{{ $row->id }}][ar]" rows="2" dir="rtl" class="form-control">{{ $row->values['ar'] ?? '' }}</textarea>
+                                                <textarea name="values[{{ $row->id }}][ar]" rows="{{ $textareaRows }}" dir="rtl" class="form-control">{{ $row->values['ar'] ?? '' }}</textarea>
                                             @else
                                                 <input type="text" name="values[{{ $row->id }}][ar]" value="{{ $row->values['ar'] ?? '' }}" dir="rtl" class="form-control" />
                                             @endif

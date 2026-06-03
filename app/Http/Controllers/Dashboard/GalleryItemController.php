@@ -60,6 +60,8 @@ class GalleryItemController extends Controller
         if ($request->hasFile('image')) {
             $gallery->clearMediaCollection('image');
             $gallery->addMediaFromRequest('image')->toMediaCollection('image');
+        } elseif ($request->boolean('remove_image')) {
+            $gallery->clearMediaCollection('image');
         }
 
         return redirect()->route('dashboard.gallery.index')->with('status', 'Gallery item updated.');
@@ -83,6 +85,7 @@ class GalleryItemController extends Controller
             'position' => ['nullable', 'integer', 'min:0'],
             'is_published' => ['nullable', 'boolean'],
             'image' => [$imageRequired ? 'required' : 'nullable', 'image', 'max:5120'],
+            'remove_image' => ['nullable', 'boolean'],
         ]);
     }
 

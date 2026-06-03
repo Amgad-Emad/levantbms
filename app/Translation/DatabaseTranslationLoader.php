@@ -28,7 +28,7 @@ class DatabaseTranslationLoader extends FileLoader
     }
 
     /**
-     * @return array<string, string>
+     * @return array<string, string|array>
      */
     protected function databaseLines(string $locale): array
     {
@@ -45,9 +45,15 @@ class DatabaseTranslationLoader extends FileLoader
             foreach ($rows as $row) {
                 $value = $row->translate($locale);
 
-                if ($value !== '') {
-                    $lines[$row->key] = $value;
+                if ($value === '') {
+                    continue;
                 }
+
+                // List rows are stored as one-item-per-line text; rebuild the
+                // array shape the front-end blades expect.
+                $lines[$row->key] = ListContent::isList($row->key)
+                    ? ListContent::decode($row->key, $value)
+                    : $value;
             }
 
             return $lines;

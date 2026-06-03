@@ -43,7 +43,13 @@
         <div class="col-lg-4">
             <div class="card"><div class="card-header"><h5 class="card-title mb-0">Logo & display</h5></div>
                 <div class="card-body d-flex flex-column gap-3">
-                    @if ($partner->exists && $partner->logoUrl())<img src="{{ $partner->logoUrl() }}" class="img-fluid rounded border p-2 mb-1" alt="">@endif
+                    @if ($partner->exists && $partner->logoUrl())
+                        <img src="{{ $partner->logoUrl() }}" class="img-fluid rounded border p-2 mb-1" alt="">
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="remove_logo" name="remove_logo" value="1">
+                            <label class="form-check-label text-danger small" for="remove_logo">Remove current logo</label>
+                        </div>
+                    @endif
                     <div><label class="form-label">Logo / brand asset</label><input type="file" name="logo" accept="image/*" class="form-control"></div>
                     <div><label class="form-label">Website</label><input type="url" name="website" class="form-control" value="{{ old('website', $partner->website) }}" placeholder="https://"></div>
                     <div><label class="form-label">Order</label><input type="number" name="position" min="0" class="form-control" value="{{ old('position', $partner->position ?? 0) }}"></div>

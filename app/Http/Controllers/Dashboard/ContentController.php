@@ -97,6 +97,8 @@ class ContentController extends Controller
             'values.*.ar' => ['nullable', 'string'],
             'images' => ['array'],
             'images.*' => ['nullable', 'image', 'max:5120'],
+            'remove_images' => ['array'],
+            'remove_images.*' => ['nullable'],
         ]);
 
         $rows = Content::where('group', 'front')->where('page', $pageName)->get()->keyBy('id');
@@ -110,15 +112,22 @@ class ContentController extends Controller
             }
         }
 
-        // Image slots
+        // Image slots — upload replaces, "remove" clears.
         $allowedSlots = array_keys(self::IMAGE_SLOTS[$pageName] ?? []);
-        foreach ($request->file('images', []) as $slot => $file) {
-            if (! in_array($slot, $allowedSlots, true) || ! $file) {
-                continue;
+        $files = $request->file('images', []);
+        $removals = $request->input('remove_images', []);
+
+        foreach ($allowedSlots as $slot) {
+            $file = $files[$slot] ?? null;
+            $remove = ! empty($removals[$slot]);
+
+            if ($file) {
+                $pageImage = PageImage::firstOrCreate(['page' => $this->pageKey($pageName), 'slot' => $slot]);
+                $pageImage->clearMediaCollection('image');
+                $pageImage->addMedia($file)->toMediaCollection('image');
+            } elseif ($remove) {
+                PageImage::where('page', $this->pageKey($pageName))->where('slot', $slot)->first()?->clearMediaCollection('image');
             }
-            $pageImage = PageImage::firstOrCreate(['page' => $this->pageKey($pageName), 'slot' => $slot]);
-            $pageImage->clearMediaCollection('image');
-            $pageImage->addMedia($file)->toMediaCollection('image');
         }
 
         return redirect()

@@ -86,6 +86,7 @@ class PostController extends Controller
             'is_featured' => ['nullable', 'boolean'],
             'is_published' => ['nullable', 'boolean'],
             'cover' => ['nullable', 'image', 'max:5120'],
+            'remove_cover' => ['nullable', 'boolean'],
         ]);
     }
 
@@ -109,6 +110,8 @@ class PostController extends Controller
         if ($request->hasFile('cover')) {
             $post->clearMediaCollection('cover');
             $post->addMediaFromRequest('cover')->toMediaCollection('cover');
+        } elseif ($request->boolean('remove_cover')) {
+            $post->clearMediaCollection('cover');
         }
     }
 
