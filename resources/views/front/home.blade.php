@@ -4,11 +4,14 @@
 
 @section('content')
   <!-- =============== HERO =============== -->
-  <section class="relative overflow-hidden pt-20 md:pt-28 pb-24 md:pb-32">
+  @php $heroBg = \App\Models\PageImage::url('home', 'hero_bg') ?: asset('front/uploads/hero-bg.jpg'); @endphp
+  <section class="relative overflow-hidden pt-20 md:pt-28 pb-24 md:pb-32 bg-cover bg-center bg-no-repeat" style="background-image:url('{{ $heroBg }}')">
+    <!-- Tint over the photo so the headline stays readable — tune the opacities to taste -->
+    <div class="absolute inset-0 bg-gradient-to-b from-cream/85 via-cream/80 to-cream dark:from-navy-900/85 dark:via-navy-900/90 dark:to-navy-900" aria-hidden="true"></div>
     <div class="absolute inset-0 dotgrid text-mute" style="mask-image:radial-gradient(70% 60% at 50% 30%, #000 30%, transparent 80%); -webkit-mask-image:radial-gradient(70% 60% at 50% 30%, #000 30%, transparent 80%);" aria-hidden="true"></div>
     <div class="absolute top-20 -end-10 w-60 h-60 stripe-motif" style="mask-image:linear-gradient(225deg,#000,transparent 70%); -webkit-mask-image:linear-gradient(225deg,#000,transparent 70%);" aria-hidden="true"></div>
 
-    <div class="relative max-w-container mx-auto px-5 sm:px-10">
+    <div class="relative z-10 max-w-container mx-auto px-5 sm:px-10">
       <div class="grid lg:grid-cols-[1.4fr_1fr] gap-12 lg:gap-16 items-center">
         <div>
           <div class="eyebrow mb-7 reveal">{{ __('front.home.eyebrow') }}</div>
@@ -48,12 +51,12 @@
         @php $hero = \App\Models\PageImage::url('home', 'hero'); @endphp
         @if ($hero)
         <!-- Hero image (set via CMS → Pages → Home → Hero image) -->
-        <div class="relative h-[520px] hidden lg:block reveal delay-2">
+        <div class="relative h-[520px] hidden lg:block reveal delay-2 lg:-translate-y-8">
           <div class="absolute inset-0 rounded-2xl bg-cover bg-center shadow-md-soft border border-ink/10 dark:border-white/10" style="background-image:url('{{ $hero }}')"></div>
-          <div class="absolute -bottom-5 -start-5 w-36 h-36 rounded-full border border-dashed border-orange-500 flex items-center justify-center bg-cream dark:bg-navy-900">
+          <div class="absolute -bottom-7 -start-7 w-48 h-48 rounded-full border border-dashed border-orange-500 flex items-center justify-center bg-cream dark:bg-navy-900">
             <div class="text-center">
-              <div class="font-serif italic font-light text-3xl text-orange-500 leading-none">20+</div>
-              <div class="font-mono text-[9px] uppercase tracking-[.18em] text-mute mt-1">{{ __('front.home.yearsLabel') }}</div>
+              <div class="font-serif italic font-light text-6xl text-orange-500 leading-none">20+</div>
+              <div class="font-mono text-[11px] uppercase tracking-[.2em] text-mute mt-2">{{ __('front.home.yearsLabel') }}</div>
             </div>
           </div>
         </div>
