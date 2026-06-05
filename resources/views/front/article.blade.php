@@ -9,8 +9,9 @@
 
 @push('head')
 <style>
-  .article-body { font-size: 1.125rem; line-height: 1.75; }
+  .article-body { font-size: 1.125rem; line-height: 1.75; overflow-wrap: break-word; word-wrap: break-word; }
   .article-body p { margin-bottom: 1.25rem; }
+  .article-body img { max-width: 100%; height: auto; border-radius: 12px; }
   .article-body h2, .article-body h3 { font-family: 'Sora', sans-serif; font-weight: 600; letter-spacing: -.01em; margin: 2.25rem 0 1.1rem; line-height: 1.2; }
   .article-body h2 { font-size: 1.75rem; }
   .article-body h3 { font-size: 1.4rem; }
@@ -18,7 +19,8 @@
   .article-body li { margin-bottom: .4rem; }
   .article-body blockquote { margin: 2rem 0; padding-inline-start: 1.5rem; border-inline-start: 3px solid #F58220; font-family: 'Fraunces', serif; font-style: italic; font-weight: 300; font-size: 1.5rem; line-height: 1.4; }
   .article-body a { color: #F58220; text-decoration: underline; }
-  .article-body table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: .95rem; }
+  /* Let wide tables scroll inside the article instead of stretching the whole page on mobile */
+  .article-body table { display: block; width: 100%; max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; border-collapse: collapse; margin: 1.5rem 0; font-size: .95rem; }
   .article-body th, .article-body td { border: 1px solid rgba(10,18,36,.12); padding: .6rem .85rem; text-align: start; vertical-align: top; }
   .article-body thead th { background: rgba(31,66,117,.06); font-family: 'Sora', sans-serif; font-weight: 600; font-size: .8rem; text-transform: uppercase; letter-spacing: .04em; }
   .dark .article-body th, .dark .article-body td { border-color: rgba(255,255,255,.14); }

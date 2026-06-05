@@ -12,8 +12,8 @@
     <div class="absolute top-20 -end-10 w-60 h-60 stripe-motif" style="mask-image:linear-gradient(225deg,#000,transparent 70%); -webkit-mask-image:linear-gradient(225deg,#000,transparent 70%);" aria-hidden="true"></div>
 
     <div class="relative z-10 max-w-container mx-auto px-5 sm:px-10">
-      <div class="grid lg:grid-cols-[1.4fr_1fr] gap-12 lg:gap-16 items-center">
-        <div>
+      <div class="grid grid-cols-1 lg:grid-cols-[1.4fr_1fr] gap-12 lg:gap-16 items-center">
+        <div class="min-w-0">
           <div class="eyebrow mb-7 reveal">{{ __('front.home.eyebrow') }}</div>
           <h1 class="font-display font-medium tracking-tight text-[clamp(40px,6.4vw,84px)] leading-[1.02] mb-7 reveal delay-1">
             <span>{{ __('front.home.h1a') }}</span>
@@ -160,7 +160,7 @@
     <div class="max-w-container mx-auto px-5 sm:px-10">
       <div class="eyebrow mb-6 reveal">{{ __('front.home.partnersEyebrow') }}</div>
       <h2 class="font-display font-medium text-[clamp(32px,4vw,56px)] leading-[1.05] tracking-tight max-w-[720px] mb-12 reveal delay-1">{{ __('front.home.partnersTitle') }}</h2>
-      <div class="grid md:grid-cols-2 gap-6 reveal">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 reveal">
         @foreach ([['n' => 1, 'badge' => 'HR'], ['n' => 2, 'badge' => 'FIN']] as $p)
           @php $n = $p['n']; @endphp
           <div class="bg-white dark:bg-navy-800 border border-ink/10 dark:border-white/10 rounded-2xl p-10 flex flex-col gap-4 hover:border-orange-500 transition">
@@ -185,7 +185,7 @@
     <div class="relative max-w-container mx-auto px-5 sm:px-10">
       <div class="eyebrow mb-6 reveal">{{ __('front.home.pillarsEyebrow') }}</div>
       <h2 class="font-display font-medium text-[clamp(32px,4vw,56px)] leading-[1.05] tracking-tight text-white max-w-[720px] mb-16 reveal delay-1">{{ __('front.home.pillarsTitle') }}</h2>
-      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-white/10 border-t border-white/10 reveal">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-white/10 border-t border-white/10 reveal">
         @foreach ([1,2,3,4] as $n)
           <div class="bg-navy-800 dark:bg-navy-900 p-7 min-h-[240px] flex flex-col gap-4">
             <div class="font-serif italic font-light text-3xl text-orange-500">{{ str_pad($n, 2, '0', STR_PAD_LEFT) }}</div>
@@ -214,7 +214,7 @@
             ['slug' => 'how-to-incorporate-a-company-bahrain-2025',   'catKey' => 'blog.catSetup',  'read' => 9],
         ];
       @endphp
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 reveal">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 reveal">
         @foreach ($homePosts as $post)
           <a href="{{ route('front.article', ['slug' => $post['slug']]) }}" class="bg-white dark:bg-navy-800 border border-ink/10 dark:border-white/10 rounded-2xl overflow-hidden hover:border-orange-500 transition">
             <div class="img-ph aspect-[4/3]"><span class="ph-label">image · {{ __('front.'.$post['catKey']) }}</span></div>

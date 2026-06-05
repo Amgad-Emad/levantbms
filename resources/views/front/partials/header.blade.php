@@ -13,13 +13,13 @@
     $currentLocale = app()->getLocale();
 @endphp
 <div class="bg-navy-800 dark:bg-navy-900 text-cream text-xs py-2.5 border-b border-white/5">
-  <div class="max-w-container mx-auto px-5 sm:px-10 flex items-center justify-between gap-6">
-    <a href="{{ route('front.about') }}" class="text-orange-500 hover:text-cream transition">{{ __('front.top.welcome') }}</a>
-    <a href="https://www.google.com/maps/place/Levant+Business+Management+Services,+Bahrain.+Professional+Body/" target="_blank" rel="noreferrer" class="text-orange-500 hover:text-cream transition">{{ __('front.top.findMap') }}</a>
+  <div class="max-w-container mx-auto px-5 sm:px-10 flex items-center justify-between gap-3 sm:gap-6">
+    <a href="{{ route('front.about') }}" class="text-orange-500 hover:text-cream transition min-w-0 truncate">{{ __('front.top.welcome') }}</a>
+    <a href="https://www.google.com/maps/place/Levant+Business+Management+Services,+Bahrain.+Professional+Body/" target="_blank" rel="noreferrer" class="text-orange-500 hover:text-cream transition shrink-0">{{ __('front.top.findMap') }}</a>
   </div>
 </div>
 <header class="sticky top-0 z-50 backdrop-blur-xl bg-cream/85 dark:bg-navy-900/85 border-b border-ink/10 dark:border-white/10">
-  <div class="max-w-container mx-auto px-5 sm:px-10 flex items-center justify-between gap-8 py-4">
+  <div class="max-w-container mx-auto px-5 sm:px-10 flex items-center justify-between gap-3 sm:gap-8 py-4">
     <a href="{{ route('front.home') }}" class="flex items-center gap-3 shrink-0">
       <svg width="44" height="28" viewBox="0 0 56 36" fill="none" aria-hidden="true">
         <rect x="2"  y="6"  width="12" height="3" rx="1.5" fill="#F58220" transform="skewX(-22)"/>
@@ -31,7 +31,7 @@
       </svg>
       <div>
         <div class="font-display font-bold text-lg leading-none tracking-tight">Levant<span class="text-orange-500">BMS</span></div>
-        <div class="font-mono text-[9px] uppercase tracking-[.16em] text-mute mt-1">{{ __('front.logo.sub') }}</div>
+        <div class="hidden sm:block font-mono text-[9px] uppercase tracking-[.16em] text-mute mt-1">{{ __('front.logo.sub') }}</div>
       </div>
     </a>
     <nav class="hidden lg:flex items-center gap-1">
@@ -41,8 +41,8 @@
            @if($page === $item['key']) aria-current="page" @endif>{{ __('front.nav.'.$item['key']) }}</a>
       @endforeach
     </nav>
-    <div class="flex items-center gap-2.5">
-      <div class="flex items-center gap-0 border border-ink/15 dark:border-white/15 rounded-full p-0.5 font-mono text-[11px] font-semibold">
+    <div class="flex items-center gap-1.5 sm:gap-2.5">
+      <div class="hidden sm:flex items-center gap-0 border border-ink/15 dark:border-white/15 rounded-full p-0.5 font-mono text-[11px] font-semibold">
         @foreach (LaravelLocalization::getSupportedLocales() as $code => $props)
           @php
               $isActive = $code === $currentLocale;
@@ -68,9 +68,21 @@
   </div>
   <div data-mobile-menu data-open="false" class="lg:hidden absolute inset-x-0 top-full bg-cream dark:bg-navy-900 border-b border-ink/10 dark:border-white/10 hidden transition-transform duration-300 px-5 sm:px-10 py-4">
     <div class="flex flex-col">
-      @foreach ($navItems as $i => $item)
+      @foreach ($navItems as $item)
         <a href="{{ route($item['route']) }}"
-           class="py-3 text-base font-medium {{ $i < count($navItems) - 1 ? 'border-b border-ink/5 dark:border-white/5' : '' }}">{{ __('front.nav.'.$item['key']) }}</a>
+           class="py-3 text-base font-medium border-b border-ink/5 dark:border-white/5">{{ __('front.nav.'.$item['key']) }}</a>
+      @endforeach
+    </div>
+    <a href="{{ route('front.contact') }}" class="btn-link mt-5 inline-flex items-center justify-center gap-2 w-full px-5 py-3.5 rounded-full bg-orange-500 hover:bg-orange-600 text-white font-semibold text-sm shadow-md-soft transition">
+      <span>{{ __('front.nav.cta') }}</span><span class="btn-arrow">→</span>
+    </a>
+    <div class="mt-4 flex items-center gap-2 sm:hidden">
+      @foreach (LaravelLocalization::getSupportedLocales() as $code => $props)
+        @php $isActive = $code === $currentLocale; @endphp
+        <a rel="alternate" hreflang="{{ $code }}"
+           href="{{ LaravelLocalization::getLocalizedURL($code, null, [], true) }}"
+           class="flex-1 text-center px-4 py-2.5 rounded-full font-mono text-xs font-semibold tracking-wider border transition {{ $isActive ? 'bg-navy-800 dark:bg-orange-500 text-cream dark:text-navy-900 border-transparent' : 'border-ink/15 dark:border-white/15 text-ink/60 dark:text-cream/60' }}"
+           aria-label="{{ $props['native'] }}">{{ $props['native'] }}</a>
       @endforeach
     </div>
   </div>
