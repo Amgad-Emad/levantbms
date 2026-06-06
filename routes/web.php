@@ -23,7 +23,7 @@ Route::group(
         'middleware' => ['localize', 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath', \App\Http\Middleware\TrackPageView::class],
     ],
     function () {
-        Route::get('/',                                                fn ()      => view('front.home'))    ->name('front.home');
+        Route::get('/',                                                [\App\Http\Controllers\Front\BlogController::class, 'home'])->name('front.home');
         Route::get(LaravelLocalization::transRoute('routes.about'),    fn ()      => view('front.about'))   ->name('front.about');
         Route::get(LaravelLocalization::transRoute('routes.services'), [\App\Http\Controllers\Front\ServiceController::class, 'index'])->name('front.services');
         Route::get(LaravelLocalization::transRoute('routes.partners'), [\App\Http\Controllers\Front\PartnerController::class, 'index'])->name('front.partners');

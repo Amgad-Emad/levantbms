@@ -208,21 +208,23 @@
         <a href="{{ route('front.blog') }}" class="btn-link inline-flex items-center gap-2 px-6 py-3.5 rounded-full border border-ink/15 dark:border-white/20 hover:border-orange-500 hover:text-orange-500 font-semibold text-sm transition"><span>{{ __('front.c.viewAll') }}</span><span class="btn-arrow">→</span></a>
       </div>
       @php
-        $homePosts = [
-            ['slug' => 'top-business-management-consultancy-bahrain', 'catKey' => 'blog.catGuides', 'read' => 8],
-            ['slug' => 'how-to-invest-in-bahrain-2025',               'catKey' => 'blog.catInvest', 'read' => 11],
-            ['slug' => 'how-to-incorporate-a-company-bahrain-2025',   'catKey' => 'blog.catSetup',  'read' => 9],
-        ];
+        // Posts come from the database (App\Models\Post via Front\BlogController@home).
+        // $posts and $catKeys are injected by the controller.
+        $catLabel = fn ($cat) => isset($catKeys[$cat]) ? __('front.'.$catKeys[$cat]) : $cat;
       @endphp
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 reveal">
-        @foreach ($homePosts as $post)
-          <a href="{{ route('front.article', ['slug' => $post['slug']]) }}" class="bg-white dark:bg-navy-800 border border-ink/10 dark:border-white/10 rounded-2xl overflow-hidden hover:border-orange-500 transition">
-            <div class="img-ph aspect-[4/3]"><span class="ph-label">image · {{ __('front.'.$post['catKey']) }}</span></div>
+        @foreach ($posts as $post)
+          <a href="{{ route('front.article', ['slug' => $post->slug]) }}" class="bg-white dark:bg-navy-800 border border-ink/10 dark:border-white/10 rounded-2xl overflow-hidden hover:border-orange-500 transition group">
+            @if ($post->coverUrl('thumb'))
+              <div class="aspect-[4/3] bg-cover bg-center" style="background-image:url('{{ $post->coverUrl('thumb') }}')"></div>
+            @else
+              <div class="img-ph aspect-[4/3]"><span class="ph-label">image · {{ $catLabel($post->category) }}</span></div>
+            @endif
             <div class="p-7">
-              <div class="flex gap-2.5 items-center font-mono text-xs text-mute tracking-wider mb-3.5"><span class="text-orange-500">{{ __('front.'.$post['catKey']) }}</span><span>·</span><span>{{ $post['read'] }} {{ __('front.c.minread') }}</span></div>
-              <h3 class="font-display font-semibold text-xl tracking-tight leading-snug mb-3.5">{{ __('front.posts.'.$post['slug'].'.title') }}</h3>
-              <p class="text-sm text-mute dark:text-cream/60 leading-relaxed">{{ __('front.posts.'.$post['slug'].'.desc') }}</p>
-              <div class="mt-4 font-mono text-xs text-mute tracking-wider">{{ __('front.posts.'.$post['slug'].'.date') }}</div>
+              <div class="flex gap-2.5 items-center font-mono text-xs text-mute tracking-wider mb-3.5"><span class="text-orange-500">{{ $catLabel($post->category) }}</span><span>·</span><span>{{ $post->read_minutes }} {{ __('front.c.minread') }}</span></div>
+              <h3 class="font-display font-semibold text-xl tracking-tight leading-snug mb-3.5 group-hover:text-orange-500 transition">{{ $post->title }}</h3>
+              <p class="text-sm text-mute dark:text-cream/60 leading-relaxed">{{ $post->excerpt }}</p>
+              <div class="mt-4 font-mono text-xs text-mute tracking-wider">{{ optional($post->published_at)->translatedFormat('F j, Y') }}</div>
             </div>
           </a>
         @endforeach

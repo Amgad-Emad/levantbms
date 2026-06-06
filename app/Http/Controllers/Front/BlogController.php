@@ -16,6 +16,21 @@ class BlogController extends Controller
         'Guides' => 'blog.catGuides',
     ];
 
+    public function home(): View
+    {
+        $posts = Post::published()
+            ->orderByDesc('is_featured')
+            ->orderByDesc('published_at')
+            ->orderByDesc('id')
+            ->take(3)
+            ->get();
+
+        return view('front.home', [
+            'posts' => $posts,
+            'catKeys' => self::CATEGORY_KEYS,
+        ]);
+    }
+
     public function index(): View
     {
         $published = Post::published()->orderByDesc('published_at')->orderByDesc('id')->get();
