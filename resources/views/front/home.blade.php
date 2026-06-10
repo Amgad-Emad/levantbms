@@ -19,7 +19,7 @@
           <h1 class="font-display font-bold tracking-tight text-[clamp(34px,5.4vw,72px)] leading-[1.08] mb-7 reveal">
             <span>{{ __('front.home.h1a') }} </span><span class="text-orange-500">{{ __('front.home.h1b') }}</span> <span>{{ __('front.home.h1c') }}</span>
           </h1>
-          <p class="max-w-[560px] text-lg font-semibold leading-relaxed text-ink dark:text-cream mb-4 reveal delay-1">{{ __('front.home.subLead') }}</p>
+          {{-- <p class="max-w-[560px] text-lg font-semibold leading-relaxed text-ink dark:text-cream mb-4 reveal delay-1">{{ __('front.home.subLead') }}</p> --}}
           <p class="max-w-[560px] text-base leading-relaxed text-mute dark:text-cream/70 mb-5 reveal delay-2">{{ __('front.home.sub') }}</p>
           <p class="max-w-[560px] flex items-start gap-3 text-base leading-relaxed text-mute dark:text-cream/60 mb-9 reveal delay-2">
             <svg class="shrink-0 mt-1 text-orange-500" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
