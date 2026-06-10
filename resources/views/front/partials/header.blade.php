@@ -15,19 +15,21 @@
 <div class="bg-navy-800 dark:bg-navy-900 text-cream text-xs py-2.5 border-b border-white/5">
   <div class="max-w-container mx-auto px-5 sm:px-10 flex items-center justify-between gap-3 sm:gap-6">
     <a href="{{ route('front.about') }}" class="text-orange-500 hover:text-cream transition min-w-0 truncate">{{ __('front.top.welcome') }}</a>
-    <a href="https://www.google.com/maps/place/Levant+Business+Management+Services,+Bahrain.+Professional+Body/" target="_blank" rel="noreferrer" class="text-orange-500 hover:text-cream transition shrink-0">{{ __('front.top.findMap') }}</a>
+    <a href="https://www.google.com/maps/search/?api=1&query=Bahrain+Financial+Harbour%2C+Manama" target="_blank" rel="noreferrer" class="text-orange-500 hover:text-cream transition shrink-0">{{ __('front.top.findMap') }}</a>
   </div>
 </div>
 <header class="sticky top-0 z-50 backdrop-blur-xl bg-cream/85 dark:bg-navy-900/85 border-b border-ink/10 dark:border-white/10">
   <div class="max-w-container mx-auto px-5 sm:px-10 flex items-center justify-between gap-3 sm:gap-8 py-4">
-    <a href="{{ route('front.home') }}" class="flex items-center gap-3 shrink-0">
-      <svg width="44" height="28" viewBox="0 0 56 36" fill="none" aria-hidden="true">
-        <rect x="2"  y="6"  width="12" height="3" rx="1.5" fill="#F58220" transform="skewX(-22)"/>
-        <rect x="16" y="6"  width="12" height="3" rx="1.5" fill="currentColor" class="text-navy-800 dark:text-cream" transform="skewX(-22)"/>
-        <rect x="6"  y="14" width="12" height="3" rx="1.5" fill="currentColor" class="text-navy-800 dark:text-cream" transform="skewX(-22)"/>
-        <rect x="20" y="14" width="12" height="3" rx="1.5" fill="#F58220" transform="skewX(-22)"/>
-        <rect x="2"  y="22" width="12" height="3" rx="1.5" fill="currentColor" class="text-navy-800 dark:text-cream" transform="skewX(-22)"/>
-        <rect x="16" y="22" width="12" height="3" rx="1.5" fill="#F58220" transform="skewX(-22)"/>
+    <a href="{{ route('front.home') }}" dir="ltr" class="flex items-center gap-3 shrink-0">
+      {{-- LevantBMS monogram — navy badge (blue) + gold/orange "L" + harbour-tower accent --}}
+      <svg width="42" height="42" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+        <defs>
+          <linearGradient id="lbmsGold" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFB35C"/><stop offset="1" stop-color="#F58220"/></linearGradient>
+          <linearGradient id="lbmsNavy" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0B2545"/><stop offset="1" stop-color="#06182F"/></linearGradient>
+        </defs>
+        <rect x="1" y="1" width="46" height="46" rx="11" fill="url(#lbmsNavy)" stroke="#F58220" stroke-opacity=".85" stroke-width="1.5"/>
+        <path d="M16 12 h6 v18 h10 v6 H16 Z" fill="url(#lbmsGold)"/>
+        <rect x="26" y="12" width="6" height="11" rx="1.5" fill="#3E6BA8"/>
       </svg>
       <div>
         <div class="font-display font-bold text-lg leading-none tracking-tight">Levant<span class="text-orange-500">BMS</span></div>

@@ -4,11 +4,15 @@ namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreLeadRequest;
+use App\Mail\NewLeadMail;
 use App\Models\Lead;
+use App\Models\Setting;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 
 class ContactController extends Controller
 {
@@ -30,7 +34,28 @@ class ContactController extends Controller
             'user_agent' => $request->userAgent(),
         ]);
 
+        $this->notify($lead);
+
         return $this->acknowledge($request, $lead);
+    }
+
+    /**
+     * Email the new lead to the office inbox. The lead is already persisted,
+     * so a mail failure must never break the form — log it and move on.
+     */
+    protected function notify(Lead $lead): void
+    {
+        $recipient = Setting::get('contact.lead_recipient')
+            ?: Setting::get('contact.email', 'info@levantbms.com');
+
+        try {
+            Mail::to($recipient)->send(new NewLeadMail($lead));
+        } catch (\Throwable $e) {
+            Log::error('Lead notification email failed', [
+                'lead_id' => $lead->id,
+                'error' => $e->getMessage(),
+            ]);
+        }
     }
 
     /**

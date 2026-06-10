@@ -4,23 +4,27 @@
 
 @section('content')
   <!-- =============== HERO =============== -->
-  @php $heroBg = \App\Models\PageImage::url('home', 'hero_bg') ?: asset('front/uploads/hero-bg.jpg'); @endphp
-  <section class="relative overflow-hidden pt-20 md:pt-28 pb-24 md:pb-32 bg-cover bg-center bg-no-repeat" style="background-image:url('{{ $heroBg }}')">
-    <!-- Tint over the photo so the headline stays readable — tune the opacities to taste -->
-    <div class="absolute inset-0 bg-gradient-to-b from-cream/85 via-cream/80 to-cream dark:from-navy-900/85 dark:via-navy-900/90 dark:to-navy-900" aria-hidden="true"></div>
+  {{-- Hero background is fully CMS-controlled: set it via Dashboard → Content → Home → "Hero background image".
+       Remove it there (the "Remove current image" checkbox) and the hero falls back to the clean gradient/texture — no photo. --}}
+  @php $heroBg = \App\Models\PageImage::url('home', 'hero_bg'); @endphp
+  <section class="relative overflow-hidden pt-24 md:pt-36 pb-28 md:pb-40 bg-cover bg-center bg-no-repeat"@if ($heroBg) style="background-image:url('{{ $heroBg }}')"@endif>
+    <!-- Tint over the photo so the headline stays readable — lighter wash keeps the background photo strong, not faded -->
+    <div class="absolute inset-0 bg-gradient-to-b from-cream/70 via-cream/60 to-cream dark:from-navy-900/75 dark:via-navy-900/80 dark:to-navy-900" aria-hidden="true"></div>
     <div class="absolute inset-0 dotgrid text-mute" style="mask-image:radial-gradient(70% 60% at 50% 30%, #000 30%, transparent 80%); -webkit-mask-image:radial-gradient(70% 60% at 50% 30%, #000 30%, transparent 80%);" aria-hidden="true"></div>
     <div class="absolute top-20 -end-10 w-60 h-60 stripe-motif" style="mask-image:linear-gradient(225deg,#000,transparent 70%); -webkit-mask-image:linear-gradient(225deg,#000,transparent 70%);" aria-hidden="true"></div>
 
     <div class="relative z-10 max-w-container mx-auto px-5 sm:px-10">
-      <div class="grid grid-cols-1 lg:grid-cols-[1.4fr_1fr] gap-12 lg:gap-16 items-center">
+      <div class="grid grid-cols-1 lg:grid-cols-[1.4fr_1fr] gap-14 lg:gap-20 items-center">
         <div class="min-w-0">
-          <div class="eyebrow mb-7 reveal">{{ __('front.home.eyebrow') }}</div>
-          <h1 class="font-display font-medium tracking-tight text-[clamp(40px,6.4vw,84px)] leading-[1.02] mb-7 reveal delay-1">
-            <span>{{ __('front.home.h1a') }}</span>
-            <span class="font-serif italic font-light text-orange-500"> {{ __('front.home.h1b') }}</span>
-            <span>{{ __('front.home.h1c') }}</span>
+          <h1 class="font-display font-bold tracking-tight text-[clamp(34px,5.4vw,72px)] leading-[1.08] mb-7 reveal">
+            <span>{{ __('front.home.h1a') }} </span><span class="text-orange-500">{{ __('front.home.h1b') }}</span><span>{{ __('front.home.h1c') }}</span>
           </h1>
-          <p class="max-w-[520px] text-lg leading-relaxed text-mute dark:text-cream/60 mb-9 reveal delay-2">{{ __('front.home.sub') }}</p>
+          <p class="max-w-[560px] text-lg font-semibold leading-relaxed text-ink dark:text-cream mb-4 reveal delay-1">{{ __('front.home.subLead') }}</p>
+          <p class="max-w-[560px] text-base leading-relaxed text-mute dark:text-cream/70 mb-5 reveal delay-2">{{ __('front.home.sub') }}</p>
+          <p class="max-w-[560px] flex items-start gap-3 text-base leading-relaxed text-mute dark:text-cream/60 mb-9 reveal delay-2">
+            <svg class="shrink-0 mt-1 text-orange-500" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>{{ __('front.home.location') }}</span>
+          </p>
           <div class="flex flex-wrap gap-3.5 reveal delay-3">
             <a href="{{ route('front.contact') }}" class="btn-link inline-flex items-center gap-2.5 px-6 py-3.5 rounded-full bg-orange-500 hover:bg-orange-600 text-white font-semibold text-sm shadow-md-soft transition">
               <span>{{ __('front.home.ctaPrimary') }}</span><span class="btn-arrow">→</span>
@@ -28,23 +32,6 @@
             <a href="{{ route('front.services') }}" class="inline-flex items-center gap-2 px-6 py-3.5 rounded-full border border-ink/15 dark:border-white/20 hover:border-orange-500 hover:text-orange-500 font-semibold text-sm transition">
               <span>{{ __('front.home.ctaSecondary') }}</span>
             </a>
-          </div>
-
-          <div class="mt-12 pt-7 border-t border-ink/10 dark:border-white/10 flex flex-wrap gap-6 reveal delay-4">
-            <div>
-              <div class="font-mono text-[10px] uppercase tracking-[.18em] text-mute mb-1">{{ __('front.home.estLabel') }}</div>
-              <div class="font-display font-bold text-xl">2003</div>
-            </div>
-            <div class="w-px bg-ink/10 dark:bg-white/10"></div>
-            <div>
-              <div class="font-mono text-[10px] uppercase tracking-[.18em] text-mute mb-1">{{ __('front.home.locLabel') }}</div>
-              <div class="font-display font-bold text-xl">{{ __('front.home.locVal') }}</div>
-            </div>
-            <div class="w-px bg-ink/10 dark:bg-white/10"></div>
-            <div>
-              <div class="font-mono text-[10px] uppercase tracking-[.18em] text-mute mb-1">{{ __('front.home.statusLabel') }}</div>
-              <div class="font-display font-bold text-xl text-orange-500">{{ __('front.home.statusVal') }}</div>
-            </div>
           </div>
         </div>
 
@@ -94,11 +81,11 @@
   </section>
 
   <!-- =============== MARQUEE =============== -->
-  <div class="border-y border-ink/10 dark:border-white/10 py-5 bg-white dark:bg-navy-800">
+  <div class="border-y border-white/10 py-6 bg-navy-800 dark:bg-navy-900 text-cream">
     <div class="marquee">
       <div class="marquee-track">
         @foreach (array_merge(__('front.home.marquee'), __('front.home.marquee')) as $item)
-          <span class="inline-flex items-center gap-6 font-display text-xl md:text-2xl font-medium">{{ $item }}<span class="w-1.5 h-1.5 rounded-full bg-orange-500"></span></span>
+          <span class="inline-flex items-center gap-6 font-display text-2xl md:text-3xl font-semibold">{{ $item }}<span class="w-2 h-2 rounded-full bg-orange-500"></span></span>
         @endforeach
       </div>
     </div>
@@ -260,7 +247,7 @@
       <p class="max-w-[600px] mx-auto mt-6 text-lg text-cream/80 reveal delay-2">{{ __('front.home.finalCtaBody') }}</p>
       <div class="mt-9 flex gap-3 justify-center flex-wrap reveal delay-3">
         <a href="{{ route('front.contact') }}" class="btn-link inline-flex items-center gap-2.5 px-6 py-3.5 rounded-full bg-orange-500 hover:bg-orange-600 text-white font-semibold text-sm shadow-md-soft transition"><span>{{ __('front.home.finalCtaBtn') }}</span><span class="btn-arrow">→</span></a>
-        <a href="https://www.google.com/maps/place/Levant+Business+Management+Services,+Bahrain.+Professional+Body/" target="_blank" rel="noreferrer" class="btn-link inline-flex items-center gap-2 px-6 py-3.5 rounded-full border border-white/30 text-white hover:border-white/60 font-semibold text-sm transition"><span>{{ __('front.top.findMap') }}</span></a>
+        <a href="https://www.google.com/maps/search/?api=1&query=Bahrain+Financial+Harbour%2C+Manama" target="_blank" rel="noreferrer" class="btn-link inline-flex items-center gap-2 px-6 py-3.5 rounded-full border border-white/30 text-white hover:border-white/60 font-semibold text-sm transition"><span>{{ __('front.top.findMap') }}</span></a>
       </div>
     </div>
   </section>

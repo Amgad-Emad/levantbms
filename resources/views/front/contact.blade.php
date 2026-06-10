@@ -55,9 +55,16 @@
           <label class="block">
             <span class="font-mono text-[10px] tracking-[.12em] uppercase text-orange-500 mb-1.5 block">{{ __('front.contact.f.topic') }}</span>
             <select name="topic" class="w-full px-4 py-3.5 bg-transparent border border-ink/15 dark:border-white/15 rounded-lg outline-none focus:border-orange-500 transition appearance-none">
-              @foreach ($services as $service)
-                <option value="{{ $service->title }}">{{ $service->title }}</option>
-              @endforeach
+              <optgroup label="{{ __('front.contact.f.topicMoic') }}">
+                @foreach ($services as $service)
+                  <option value="{{ $service->title }}">{{ $service->title }}</option>
+                @endforeach
+              </optgroup>
+              <optgroup label="{{ __('front.contact.f.topicCbb') }}">
+                @foreach (__('front.about.cbbServices') as $cbbType)
+                  <option value="{{ __('front.contact.f.topicCbb') }} — {{ $cbbType }}">{{ $cbbType }}</option>
+                @endforeach
+              </optgroup>
               <option value="{{ __('front.svc.other') }}">{{ __('front.svc.other') }}</option>
             </select>
           </label>
@@ -84,7 +91,7 @@
             $sPhone2 = \App\Models\Setting::get('contact.phone_secondary', '+973 66303050');
             $sEmail = \App\Models\Setting::get('contact.email', 'info@levantbms.com');
             $sWa = \App\Models\Setting::get('contact.whatsapp', '97336314567');
-            $sMap = \App\Models\Setting::get('contact.map_url', '#');
+            $sMap = \App\Models\Setting::get('contact.map_url') ?: 'https://www.google.com/maps/search/?api=1&query=Bahrain+Financial+Harbour%2C+Manama';
         @endphp
         <a href="tel:{{ preg_replace('/\s+/', '', $sPhone1) }}"  class="grid grid-cols-[56px_1fr_auto] gap-5 items-center p-7 bg-white dark:bg-navy-800 border border-ink/10 dark:border-white/10 rounded-2xl hover:border-orange-500 hover:translate-x-1 transition">
           <div class="w-12 h-12 rounded-xl bg-cream dark:bg-navy-700 border border-ink/10 dark:border-white/10 flex items-center justify-center text-orange-500">
@@ -93,7 +100,6 @@
           <div>
             <div class="font-mono text-[10px] tracking-[.18em] uppercase text-mute mb-1.5">{{ __('front.contact.callUs') }}</div>
             <div class="font-semibold text-sm" dir="ltr" style="unicode-bidi:plaintext">{{ $sPhone1 }}</div>
-            <div class="text-xs text-mute mt-0.5" dir="ltr" style="unicode-bidi:plaintext">{{ $sPhone2 }}</div>
           </div>
           <div class="text-mute btn-arrow">→</div>
         </a>
@@ -156,7 +162,7 @@
       </div>
       <div class="font-mono text-[11px] tracking-[.18em] uppercase text-orange-400 mt-5 mb-2">{{ __('front.contact.ourLocation') }}</div>
       <div class="font-display font-medium text-2xl">{{ __('front.contact.locationShort') }}</div>
-      <a href="https://www.google.com/maps/place/Levant+Business+Management+Services,+Bahrain.+Professional+Body/" target="_blank" rel="noreferrer" class="btn-link mt-5 inline-flex items-center gap-2.5 px-6 py-3.5 rounded-full bg-orange-500 hover:bg-orange-600 text-white font-semibold text-sm transition">
+      <a href="{{ $sMap }}" target="_blank" rel="noreferrer" class="btn-link mt-5 inline-flex items-center gap-2.5 px-6 py-3.5 rounded-full bg-orange-500 hover:bg-orange-600 text-white font-semibold text-sm transition">
         <span>{{ __('front.contact.directions') }}</span><span class="btn-arrow">→</span>
       </a>
     </div>

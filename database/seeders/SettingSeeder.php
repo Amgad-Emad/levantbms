@@ -11,10 +11,10 @@ class SettingSeeder extends Seeder
     {
         $settings = [
             ['key' => 'contact.phone_primary', 'group' => 'contact', 'value' => '+973 36314567'],
-            ['key' => 'contact.phone_secondary', 'group' => 'contact', 'value' => '+973 66303050'],
+            ['key' => 'contact.phone_secondary', 'group' => 'contact', 'value' => ''],
             ['key' => 'contact.email', 'group' => 'contact', 'value' => 'info@levantbms.com'],
             ['key' => 'contact.whatsapp', 'group' => 'contact', 'value' => '97336314567'],
-            ['key' => 'contact.map_url', 'group' => 'contact', 'value' => 'https://www.google.com/maps/place/Levant+Business+Management+Services,+Bahrain.+Professional+Body/'],
+            ['key' => 'contact.map_url', 'group' => 'contact', 'value' => 'https://www.google.com/maps/search/?api=1&query=Bahrain+Financial+Harbour%2C+Manama'],
             ['key' => 'contact.address', 'group' => 'contact', 'value' => 'Suite 2131, Bahrain Financial Harbour, Harbour Gate, 2nd Floor, Building No. 1435, Road No. 4626, Manama, Sea Front 346, P.O. Box: 60855'],
             ['key' => 'social.linkedin', 'group' => 'social', 'value' => ''],
             ['key' => 'social.instagram', 'group' => 'social', 'value' => ''],

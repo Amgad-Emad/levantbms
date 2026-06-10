@@ -30,7 +30,7 @@ class ContentController extends Controller
             'md_portrait' => ['Managing Director photo', 'Shown in the Leadership section. Portrait, ~4:5.'],
         ],
         'Home' => [
-            'hero_bg' => ['Hero background image', 'Full-width photo behind the homepage headline. Wide landscape, ~3:2 (e.g. 1600×1066). Leave empty to use the built-in default.'],
+            'hero_bg' => ['Hero background image', 'Full-width photo behind the homepage headline. Wide landscape, ~3:2 (e.g. 1600×1066). Tick “Remove current image” (then Save) to clear it — the hero then shows a clean gradient with no photo.'],
             'hero' => ['Hero image', 'Optional hero/office image for the homepage. Wide, ~16:9.'],
         ],
     ];

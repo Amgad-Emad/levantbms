@@ -2,7 +2,7 @@
 
 return [
     // Top bar
-    'top.welcome' => 'Welcome to LevantBMS',
+    'top.welcome' => 'Welcome to Levant Business Services — your natural gateway to investment in Bahrain and the Arabian Gulf',
     'top.findMap' => 'Find us on map →',
 
     // Nav
@@ -14,8 +14,8 @@ return [
     'nav.faqs'     => 'FAQs',
     'nav.blog'     => 'Blog',
     'nav.contact'  => 'Contact',
-    'nav.cta'      => 'Book a consultation',
-    'logo.sub'     => 'Business Management Services',
+    'nav.cta'      => 'Contact us',
+    'logo.sub'     => 'Your Partner in Success',
 
     // Common
     'c.learnMore'   => 'Learn more',
@@ -36,12 +36,14 @@ return [
 
     // Home
     'home.eyebrow'      => 'Bahrain · Professional Body · مكتب معتمد',
-    'home.h1a'          => 'Setting up business',
-    'home.h1b'          => 'in Bahrain,',
-    'home.h1c'          => 'made deliberate.',
-    'home.sub'          => 'Recognized by the Ministry of Industry & Commerce. Twenty years guiding founders, banks, and family enterprises through company formation, regulatory approvals, and the work that comes after.',
+    'home.h1a'          => 'Setting up business in Bahrain —',
+    'home.h1b'          => 'with proven expertise and earned trust',
+    'home.h1c'          => '',
+    'home.subLead'      => 'A licensed Professional Body accredited by the Bahrain Ministry of Industry & Commerce.',
+    'home.sub'          => 'We help clients from across the globe realise their ambitions and plans to invest in the Kingdom of Bahrain and the Arabian Gulf region. Present in Bahrain for more than twenty years.',
+    'home.location'     => 'Strategically located at Bahrain Financial Harbour, Second Floor — directly opposite the Ministry of Industry & Commerce.',
     'home.ctaPrimary'   => 'Start your company',
-    'home.ctaSecondary' => 'How we work',
+    'home.ctaSecondary' => 'Our practice areas',
     'home.estLabel'     => 'Established',
     'home.locLabel'     => 'Location',
     'home.locVal'       => 'Bahrain Harbour',
@@ -334,6 +336,8 @@ return [
     'contact.f.phone'   => 'Phone (optional)',
     'contact.f.company' => 'Company (optional)',
     'contact.f.topic'   => 'What can we help with?',
+    'contact.f.topicMoic' => 'Ministry of Industry & Commerce',
+    'contact.f.topicCbb'  => 'Central Bank of Bahrain',
     'contact.f.msg'     => 'Tell us a bit more',
     'contact.send'        => 'Send message',
     'contact.success'     => "Thank you — we'll be in touch shortly.",
@@ -350,14 +354,15 @@ return [
 
     // Home marquee
     'home.marquee' => [
-        'Company formation',
-        'MOIC approvals',
-        'CBB licensing',
-        'Corporate governance',
-        'IPO advisory',
-        'Capital structuring',
-        'Mergers & acquisitions',
-        'Regulatory compliance',
+        'Company Formation in Bahrain',
+        'CBB Licensing',
+        'Authorized by the Ministry of Industry & Commerce',
+        'IPO Advisory',
+        '100% Foreign Ownership',
+        'Corporate Governance',
+        'Mergers & Acquisitions',
+        'Private Placement Memorandum',
+        'Since 2003',
     ],
 
     // Blog posts — title / excerpt / date (structure lives in the views, keyed by slug)

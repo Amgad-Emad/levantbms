@@ -22,9 +22,10 @@
           cream:'#FAF7F2', cream2:'#F2EDE3', ink:'#0A1224', ink2:'#1A2440', mute:'#5B6982',
         },
         fontFamily: {
-          display: ['Sora','ui-sans-serif','system-ui','sans-serif'],
-          body:    ['Manrope','ui-sans-serif','system-ui','sans-serif'],
-          serif:   ['Fraunces','ui-serif','Georgia','serif'],
+          // Tajawal carries both Arabic & Latin in one family — unified across the whole site
+          display: ['Tajawal','ui-sans-serif','system-ui','sans-serif'],
+          body:    ['Tajawal','ui-sans-serif','system-ui','sans-serif'],
+          serif:   ['Tajawal','ui-sans-serif','system-ui','sans-serif'],
           mono:    ['"JetBrains Mono"','ui-monospace','monospace'],
         },
         maxWidth: { container: '1320px' },

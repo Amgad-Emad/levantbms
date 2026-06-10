@@ -2,14 +2,14 @@
   <div class="max-w-container mx-auto px-5 sm:px-10">
     <div class="grid md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1.2fr] gap-12 mb-16">
       <div>
-        <div class="flex items-center gap-3 mb-5">
-          <svg width="48" height="32" viewBox="0 0 56 36" fill="none">
-            <rect x="2"  y="6"  width="12" height="3" rx="1.5" fill="#F58220" transform="skewX(-22)"/>
-            <rect x="16" y="6"  width="12" height="3" rx="1.5" fill="#FAF7F2" transform="skewX(-22)"/>
-            <rect x="6"  y="14" width="12" height="3" rx="1.5" fill="#FAF7F2" transform="skewX(-22)"/>
-            <rect x="20" y="14" width="12" height="3" rx="1.5" fill="#F58220" transform="skewX(-22)"/>
-            <rect x="2"  y="22" width="12" height="3" rx="1.5" fill="#FAF7F2" transform="skewX(-22)"/>
-            <rect x="16" y="22" width="12" height="3" rx="1.5" fill="#F58220" transform="skewX(-22)"/>
+        <div class="flex items-center gap-3 mb-5" dir="ltr">
+          <svg width="46" height="46" viewBox="0 0 48 48" fill="none">
+            <defs>
+              <linearGradient id="lbmsGoldF" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFB35C"/><stop offset="1" stop-color="#F58220"/></linearGradient>
+            </defs>
+            <rect x="1" y="1" width="46" height="46" rx="11" fill="#0B2545" stroke="#F58220" stroke-opacity=".85" stroke-width="1.5"/>
+            <path d="M16 12 h6 v18 h10 v6 H16 Z" fill="url(#lbmsGoldF)"/>
+            <rect x="26" y="12" width="6" height="11" rx="1.5" fill="#3E6BA8"/>
           </svg>
           <div>
             <div class="font-display font-bold text-lg leading-none">Levant<span class="text-orange-500">BMS</span></div>
@@ -45,7 +45,6 @@
         <h5 class="font-mono text-[11px] tracking-[.18em] uppercase text-orange-500 mb-4">{{ __('front.c.contactHead') }}</h5>
         <ul class="space-y-2.5">
           <li><a href="tel:+97336314567" dir="ltr" style="unicode-bidi:plaintext" class="inline-block text-cream/75 hover:text-orange-500 text-sm transition">+973 36314567</a></li>
-          <li><a href="tel:+97366303050" dir="ltr" style="unicode-bidi:plaintext" class="inline-block text-cream/75 hover:text-orange-500 text-sm transition">+973 66303050</a></li>
           <li><a href="mailto:info@levantbms.com" class="text-cream/75 hover:text-orange-500 text-sm transition">info@levantbms.com</a></li>
         </ul>
       </div>
