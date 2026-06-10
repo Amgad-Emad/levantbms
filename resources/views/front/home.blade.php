@@ -17,7 +17,7 @@
       <div class="grid grid-cols-1 lg:grid-cols-[1.4fr_1fr] gap-14 lg:gap-20 items-center">
         <div class="min-w-0">
           <h1 class="font-display font-bold tracking-tight text-[clamp(34px,5.4vw,72px)] leading-[1.08] mb-7 reveal">
-            <span>{{ __('front.home.h1a') }} </span><span class="text-orange-500">{{ __('front.home.h1b') }}</span><span>{{ __('front.home.h1c') }}</span>
+            <span>{{ __('front.home.h1a') }} </span><span class="text-orange-500">{{ __('front.home.h1b') }}</span> <span>{{ __('front.home.h1c') }}</span>
           </h1>
           <p class="max-w-[560px] text-lg font-semibold leading-relaxed text-ink dark:text-cream mb-4 reveal delay-1">{{ __('front.home.subLead') }}</p>
           <p class="max-w-[560px] text-base leading-relaxed text-mute dark:text-cream/70 mb-5 reveal delay-2">{{ __('front.home.sub') }}</p>
