@@ -1,5 +1,5 @@
 /* tw/assets/style.css — small layer Tailwind can't easily express */
-@import url("https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Tajawal:wght@300;400;500;700;800&family=JetBrains+Mono:wght@400;500;600;800&display=swap");
 
 :root{
   --motion:1;
@@ -21,6 +21,13 @@ body,.font-display,.font-body,.font-serif{
 }
 /* Tajawal has no true italic — keep faux-italic off for the decorative serif accents */
 .font-serif{font-style:normal;}
+/* English (LTR) uses Inter for all text; Arabic (RTL) keeps Tajawal */
+html[dir="ltr"] body,
+html[dir="ltr"] .font-display,
+html[dir="ltr"] .font-body,
+html[dir="ltr"] .font-serif{
+  font-family:"Inter",ui-sans-serif,system-ui,sans-serif;
+}
 
 /* Reveal-on-scroll — fail-open: visible by default, only opacity:0 when JS marks document as ready */
 .reveal{opacity:1;transition:opacity .9s cubic-bezier(.16,1,.3,1), transform .9s cubic-bezier(.16,1,.3,1);}

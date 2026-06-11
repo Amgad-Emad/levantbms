@@ -2,6 +2,15 @@
     $page = $page ?? '';
     $locale = app()->getLocale();
     $dir = LaravelLocalization::getCurrentLocaleDirection();
+
+    // Cache-bust front assets by file mtime. clearstatcache() defeats PHP-FPM's
+    // long-lived stat cache, which otherwise freezes the version and makes the
+    // browser keep serving a stale cached CSS/JS after edits.
+    clearstatcache(true);
+    $assetVer = function (string $path): string {
+        $full = public_path($path);
+        return (string) (@filemtime($full) ?: time());
+    };
 @endphp
 <!doctype html>
 <html lang="{{ $locale }}" dir="{{ $dir }}" data-page="{{ $page }}" class="scroll-smooth">
@@ -9,7 +18,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 @include('front.partials.seo')
-<link rel="stylesheet" href="{{ asset('front/tw/assets/style.css') }}" />
+<link rel="stylesheet" href="{{ asset('front/tw/assets/style.css') }}?v={{ $assetVer('front/tw/assets/style.css') }}" />
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
   tailwind.config = {
@@ -50,7 +59,7 @@
 
 @include('front.partials.footer')
 
-<script src="{{ asset('front/tw/assets/app.js') }}"></script>
+<script src="{{ asset('front/tw/assets/app.js') }}?v={{ $assetVer('front/tw/assets/app.js') }}"></script>
 @stack('scripts')
 </body>
 </html>

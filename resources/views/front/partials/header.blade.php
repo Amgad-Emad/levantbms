@@ -12,14 +12,14 @@
     ];
     $currentLocale = app()->getLocale();
 @endphp
-<div class="bg-navy-800 dark:bg-navy-900 text-cream text-xs py-2.5 border-b border-white/5">
+<div class="bg-navy-800 dark:bg-navy-900 text-cream text-[13px] py-3 border-b border-white/5">
   <div class="max-w-container mx-auto px-5 sm:px-10 flex items-center justify-between gap-3 sm:gap-6">
     <a href="{{ route('front.about') }}" class="text-orange-500 hover:text-cream transition min-w-0 truncate">{{ __('front.top.welcome') }}</a>
     <a href="https://www.google.com/maps/search/?api=1&query=Bahrain+Financial+Harbour%2C+Manama" target="_blank" rel="noreferrer" class="text-orange-500 hover:text-cream transition shrink-0">{{ __('front.top.findMap') }}</a>
   </div>
 </div>
 <header class="sticky top-0 z-50 backdrop-blur-xl bg-cream/85 dark:bg-navy-900/85 border-b border-ink/10 dark:border-white/10">
-  <div class="max-w-container mx-auto px-5 sm:px-10 flex items-center justify-between gap-3 sm:gap-8 py-4">
+  <div class="max-w-container mx-auto px-5 sm:px-10 flex items-center justify-between gap-3 sm:gap-6 py-5 md:py-6">
     <a href="{{ route('front.home') }}" dir="ltr" class="flex items-center gap-3 shrink-0">
       {{-- LevantBMS monogram — navy badge (blue) + gold/orange "L" + harbour-tower accent --}}
       <svg width="42" height="42" viewBox="0 0 48 48" fill="none" aria-hidden="true">
@@ -32,14 +32,14 @@
         <rect x="26" y="12" width="6" height="11" rx="1.5" fill="#3E6BA8"/>
       </svg>
       <div>
-        <div class="font-display font-bold text-lg leading-none tracking-tight">Levant<span class="text-orange-500">BMS</span></div>
-        <div class="hidden sm:block font-mono text-[9px] uppercase tracking-[.16em] text-mute mt-1">{{ __('front.logo.sub') }}</div>
+        <div class="font-display font-bold text-xl leading-none tracking-tight">Levant<span class="text-orange-500">BMS</span></div>
+        <div class="hidden sm:block font-mono text-[10px] uppercase tracking-[.16em] text-mute mt-1">{{ __('front.logo.sub') }}</div>
       </div>
     </a>
     <nav class="hidden lg:flex items-center gap-1">
       @foreach ($navItems as $item)
         <a href="{{ route($item['route']) }}"
-           class="nav-link px-3.5 py-2 rounded-lg text-sm font-medium text-ink2 dark:text-cream/80 hover:text-ink dark:hover:text-cream transition"
+           class="nav-link px-3 py-2.5 rounded-lg text-[15px] font-semibold text-ink dark:text-cream/90 hover:text-ink dark:hover:text-cream transition"
            @if($page === $item['key']) aria-current="page" @endif>{{ __('front.nav.'.$item['key']) }}</a>
       @endforeach
     </nav>

@@ -105,8 +105,8 @@ return [
 
     // Final CTA
     'home.finalLabel'    => 'Location',
-    'home.finalCtaTitle' => 'The harbour is a 4-minute walk to the ministry.',
-    'home.finalCtaBody'  => 'We are strategically located at Bahrain Financial Harbour, Harbour Gate, 2nd Floor — directly opposite the Bahrain Ministry of Industry, Commerce and Tourism.',
+    'home.finalCtaTitle' => 'Same floor as the Ministry — directly opposite.',
+    'home.finalCtaBody'  => 'We are strategically located at the Bahrain Financial Harbour, Second Floor, opposite the Ministry of Industry and Commerce.',
     'home.finalCtaBtn'   => 'Schedule a meeting',
 
     // About page

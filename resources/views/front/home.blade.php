@@ -94,23 +94,13 @@
   <!-- =============== ABOUT STRIP =============== -->
   <section class="py-20 md:py-28">
     <div class="max-w-container mx-auto px-5 sm:px-10">
-      <div class="grid lg:grid-cols-[1fr_1.2fr] gap-16 items-start">
-        <div>
-          <div class="eyebrow mb-7 reveal">{{ __('front.home.aboutEyebrow') }}</div>
-          <h2 class="font-display font-medium text-[clamp(32px,4vw,56px)] leading-[1.05] tracking-tight mb-7 reveal delay-1">{{ __('front.home.aboutTitle') }}</h2>
-          <p class="text-lg leading-relaxed text-ink2 dark:text-cream/80 mb-8 reveal delay-2">{{ __('front.home.aboutBody') }}</p>
-          <a href="{{ route('front.about') }}" class="btn-link inline-flex items-center gap-2.5 px-6 py-3.5 rounded-full bg-navy-800 dark:bg-orange-500 hover:bg-navy-700 dark:hover:bg-orange-600 text-cream dark:text-navy-900 font-semibold text-sm transition reveal delay-3">
-            <span>{{ __('front.home.aboutMore') }}</span><span class="btn-arrow">→</span>
-          </a>
-        </div>
-        <div class="grid grid-cols-2 gap-px bg-ink/10 dark:bg-white/10 border border-ink/10 dark:border-white/10 rounded-2xl overflow-hidden reveal">
-          @foreach ([1,2,3,4] as $n)
-            <div class="bg-white dark:bg-navy-800 p-8 lg:p-9 min-h-[200px] flex flex-col justify-between">
-              <span class="font-display font-medium text-[clamp(48px,5.5vw,76px)] leading-none tracking-tight"><span data-counter="{{ __('front.stat'.$n.'.n') }}">0</span><span class="text-orange-500">{{ __('front.stat'.$n.'.unit') }}</span></span>
-              <div class="text-sm text-mute dark:text-cream/60 mt-6">{{ __('front.stat'.$n.'.l') }}</div>
-            </div>
-          @endforeach
-        </div>
+      <div class="max-w-[860px]">
+        <div class="eyebrow mb-7 reveal">{{ __('front.home.aboutEyebrow') }}</div>
+        <h2 class="font-display font-medium text-[clamp(32px,4vw,56px)] leading-[1.05] tracking-tight mb-7 reveal delay-1">{{ __('front.home.aboutTitle') }}</h2>
+        <p class="text-lg leading-relaxed text-ink2 dark:text-cream/80 mb-8 reveal delay-2">{{ __('front.home.aboutBody') }}</p>
+        <a href="{{ route('front.about') }}" class="btn-link inline-flex items-center gap-2.5 px-6 py-3.5 rounded-full bg-navy-800 dark:bg-orange-500 hover:bg-navy-700 dark:hover:bg-orange-600 text-cream dark:text-navy-900 font-semibold text-sm transition reveal delay-3">
+          <span>{{ __('front.home.aboutMore') }}</span><span class="btn-arrow">→</span>
+        </a>
       </div>
     </div>
   </section>
