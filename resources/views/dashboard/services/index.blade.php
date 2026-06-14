@@ -17,7 +17,7 @@
             <div class="table-responsive">
                 <table class="table table-hover align-middle mb-0">
                     <thead class="bg-light bg-opacity-50">
-                        <tr><th style="width:60px">#</th><th>Title</th><th>Timeline</th><th>Starting fee</th><th>Status</th><th class="text-end">Actions</th></tr>
+                        <tr><th style="width:60px">#</th><th>Title</th><th>Sub-services</th><th>Timeline</th><th>Starting fee</th><th>Status</th><th class="text-end">Actions</th></tr>
                     </thead>
                     <tbody>
                         @forelse ($services as $service)
@@ -27,6 +27,7 @@
                                     <div class="fw-medium">{{ $service->title->get('en') }}</div>
                                     <div class="fs-12 text-muted">{{ $service->tag->get('en') }}</div>
                                 </td>
+                                <td><a href="{{ route('dashboard.sub-services.index') }}" class="badge badge-soft-primary text-decoration-none">{{ $service->sub_services_count }} <i class="ti ti-list-details ms-1"></i></a></td>
                                 <td>{{ $service->timeline->get('en') ?: '—' }}</td>
                                 <td class="fw-medium text-success">{{ $service->fee_from->get('en') ?: '—' }}</td>
                                 <td><span class="badge badge-soft-{{ $service->is_published ? 'success' : 'secondary' }}">{{ $service->is_published ? 'Published' : 'Hidden' }}</span></td>
@@ -39,7 +40,7 @@
                                 </td>
                             </tr>
                         @empty
-                            <tr><td colspan="6" class="text-center text-muted py-5">No services yet.</td></tr>
+                            <tr><td colspan="7" class="text-center text-muted py-5">No services yet.</td></tr>
                         @endforelse
                     </tbody>
                 </table>

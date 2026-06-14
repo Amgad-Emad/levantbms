@@ -4,19 +4,13 @@ namespace App\Models;
 
 use App\Casts\AsTranslatable;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Service extends Model
+class SubService extends Model
 {
     protected $fillable = [
-        'code', 'category', 'tag', 'title', 'description', 'scope_lines',
+        'service_id', 'code', 'tag', 'title', 'description', 'scope_lines',
         'timeline', 'fee_from', 'is_published', 'position',
-    ];
-
-    /** Service categories (the authority that licenses the work). */
-    public const CATEGORIES = [
-        'moic' => 'Ministry of Industry & Commerce',
-        'cbb' => 'Central Bank of Bahrain',
     ];
 
     protected $casts = [
@@ -29,10 +23,10 @@ class Service extends Model
         'is_published' => 'boolean',
     ];
 
-    /** Sub-services nested under this service. */
-    public function subServices(): HasMany
+    /** Parent service this sub-service belongs to. */
+    public function service(): BelongsTo
     {
-        return $this->hasMany(SubService::class)->orderBy('position')->orderBy('id');
+        return $this->belongsTo(Service::class);
     }
 
     /** @return array<int, string> */

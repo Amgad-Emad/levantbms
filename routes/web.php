@@ -11,6 +11,7 @@ use App\Http\Controllers\Dashboard\PartnerController;
 use App\Http\Controllers\Dashboard\PostController;
 use App\Http\Controllers\Dashboard\SeoController;
 use App\Http\Controllers\Dashboard\ServiceController;
+use App\Http\Controllers\Dashboard\SubServiceController;
 use App\Http\Controllers\Dashboard\SettingController;
 use App\Http\Controllers\Dashboard\UserController;
 use App\Http\Controllers\ProfileController;
@@ -57,6 +58,8 @@ Route::middleware(['auth', 'verified', 'can:access-dashboard'])->group(function 
 
         // Services
         Route::resource('services', ServiceController::class)->except('show');
+        Route::resource('sub-services', SubServiceController::class)->except('show')
+            ->parameters(['sub-services' => 'subService']);
 
         // SEO (per-page metadata)
         Route::get('seo', [SeoController::class, 'index'])->name('seo.index');

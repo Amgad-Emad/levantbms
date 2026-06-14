@@ -8,6 +8,7 @@
             ['label' => 'Pages',    'icon' => 'ti-file-text',   'route' => 'dashboard.content.index',  'active' => 'dashboard.content.*'],
             ['label' => 'Blog',     'icon' => 'ti-article',     'route' => 'dashboard.posts.index',    'active' => 'dashboard.posts.*'],
             ['label' => 'Services', 'icon' => 'ti-briefcase',   'route' => 'dashboard.services.index', 'active' => 'dashboard.services.*'],
+            ['label' => 'Sub-services', 'icon' => 'ti-list-details', 'route' => 'dashboard.sub-services.index', 'active' => 'dashboard.sub-services.*'],
             ['label' => 'Partners', 'icon' => 'ti-building-store', 'route' => 'dashboard.partners.index', 'active' => 'dashboard.partners.*'],
             ['label' => 'Gallery',  'icon' => 'ti-photo',       'route' => 'dashboard.gallery.index',  'active' => 'dashboard.gallery.*'],
             ['label' => 'FAQs',     'icon' => 'ti-help-circle', 'route' => 'dashboard.faqs.index',     'active' => 'dashboard.faqs.*'],

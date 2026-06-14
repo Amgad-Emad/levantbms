@@ -27,6 +27,37 @@ test('an admin can create a service with bilingual scope and pricing', function 
     expect((string) $service->fee_from)->toBe('BD 750');
 });
 
+test('a service created without a category falls back to moic', function () {
+    $this->actingAs($this->admin)->post(route('dashboard.services.store'), [
+        'title' => ['en' => 'No Category Service'],
+        'is_published' => '1',
+    ])->assertRedirect(route('dashboard.services.index'));
+
+    expect(Service::latest('id')->first()->category)->toBe('moic');
+});
+
+test('editing a service preserves its category (category is not editable on the main service)', function () {
+    $service = Service::create(['title' => ['en' => 'CBB Main'], 'category' => 'cbb', 'is_published' => true]);
+
+    $this->actingAs($this->admin)->put(route('dashboard.services.update', $service), [
+        'title' => ['en' => 'CBB Main Renamed'],
+        'is_published' => '1',
+    ])->assertRedirect(route('dashboard.services.index'));
+
+    $service->refresh();
+    expect((string) $service->title)->toBe('CBB Main Renamed');
+    expect($service->category)->toBe('cbb');
+});
+
+test('the services index counts each service\'s sub-services', function () {
+    $service = Service::create(['title' => ['en' => 'Parent'], 'category' => 'moic', 'is_published' => true]);
+    \App\Models\SubService::create(['service_id' => $service->id, 'title' => ['en' => 'Kid'], 'is_published' => true]);
+
+    $services = app(\App\Http\Controllers\Dashboard\ServiceController::class)->index()->getData()['services'];
+
+    expect($services->firstWhere('id', $service->id)->sub_services_count)->toBe(1);
+});
+
 test('only published services render on the public services page', function () {
     Service::create(['code' => '01', 'title' => ['en' => 'Visible Service'], 'is_published' => true, 'position' => 1]);
     Service::create(['code' => '02', 'title' => ['en' => 'Hidden Service'], 'is_published' => false, 'position' => 2]);

@@ -12,14 +12,14 @@ class ServiceController extends Controller
 {
     public function index(): View
     {
-        $services = Service::orderBy('position')->orderBy('id')->get();
+        $services = Service::withCount('subServices')->orderBy('position')->orderBy('id')->get();
 
         return view('dashboard.services.index', compact('services'));
     }
 
     public function create(): View
     {
-        return view('dashboard.services.form', ['service' => new Service(['is_published' => true])]);
+        return view('dashboard.services.form', ['service' => new Service(['is_published' => true, 'category' => 'moic'])]);
     }
 
     public function store(Request $request): RedirectResponse
@@ -67,6 +67,8 @@ class ServiceController extends Controller
     protected function fill(Service $service, array $data): Service
     {
         $service->code = $data['code'] ?? null;
+        // Category is fixed per main service and not edited here — preserved as-is
+        // (new services fall back to the DB default 'moic').
         $service->tag = $data['tag'] ?? [];
         $service->title = $data['title'];
         $service->description = $data['description'] ?? [];
