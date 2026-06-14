@@ -15,7 +15,7 @@
 <div class="bg-navy-800 dark:bg-navy-900 text-cream text-[13px] py-3 border-b border-white/5">
   <div class="max-w-container mx-auto px-5 sm:px-10 flex items-center justify-between gap-3 sm:gap-6">
     <a href="{{ route('front.about') }}" class="text-orange-500 hover:text-cream transition min-w-0 truncate">{{ __('front.top.welcome') }}</a>
-    <a href="https://www.google.com/maps/search/?api=1&query=Bahrain+Financial+Harbour%2C+Manama" target="_blank" rel="noreferrer" class="text-orange-500 hover:text-cream transition shrink-0">{{ __('front.top.findMap') }}</a>
+    <a href="https://maps.app.goo.gl/UgfFKSafPaT9qDDr5" target="_blank" rel="noreferrer" class="text-orange-500 hover:text-cream transition shrink-0">{{ __('front.top.findMap') }}</a>
   </div>
 </div>
 <header class="sticky top-0 z-50 backdrop-blur-xl bg-cream/85 dark:bg-navy-900/85 border-b border-ink/10 dark:border-white/10">
